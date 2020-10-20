@@ -11,7 +11,7 @@ _Documentation coming soon…_
 
 ## Contributing
 
-1. Fork it (https://github.com/whitefusionhq/rb2js-loader/fork)
+1. Fork it (https://github.com/whitefusionhq/crystalline-element/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -21,7 +21,7 @@ _Documentation coming soon…_
 
 MIT
 
-[npm]: https://img.shields.io/npm/v/rb2js-loader.svg
-[npm-url]: https://npmjs.com/package/rb2js-loader
-[node]: https://img.shields.io/node/v/rb2js-loader.svg
+[npm]: https://img.shields.io/npm/v/crystalline-element.svg
+[npm-url]: https://npmjs.com/package/crystalline-element
+[node]: https://img.shields.io/node/v/crystalline-element.svg
 [node-url]: https://nodejs.org
