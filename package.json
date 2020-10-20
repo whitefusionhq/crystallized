@@ -1,0 +1,32 @@
+{
+  "name": "crystalline-element",
+  "version": "1.0.0",
+  "description": "A subclass of LitElement built with Ruby2JS in mind.",
+  "main": "index.js",
+  "module": "index.js",
+  "type": "module",
+  "repository": "https://github.com/whitefusionhq/crystalline-element",
+  "author": "Jared White",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 10.13.0"
+  },
+  "scripts": {
+    "start": "yarn run build -- -w",
+    "clean": "del-cli dist && del-cli _ruby2js_build",
+    "prebuild": "yarn run clean",
+    "buildruby": "bundle exec ./build_source.rb",
+    "release": "yarn run prebuild && yarn run buildruby && standard-version"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "cross-env": "^7.0.2",
+    "del-cli": "^3.0.1",
+    "standard-version": "^8.0.0"
+  }
+}
