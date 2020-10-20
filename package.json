@@ -13,10 +13,10 @@
   },
   "scripts": {
     "start": "yarn run build -- -w",
-    "clean": "del-cli dist && del-cli _ruby2js_build",
+    "clean": "del-cli dist",
     "prebuild": "yarn run clean",
-    "buildruby": "bundle exec ./build_source.rb",
-    "release": "yarn run prebuild && yarn run buildruby && standard-version"
+    "build": "bundle exec ./build_source.rb",
+    "release": "yarn run prebuild && yarn run build && standard-version"
   },
   "files": [
     "dist"
