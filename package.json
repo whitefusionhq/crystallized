@@ -8,6 +8,7 @@
   "repository": "https://github.com/whitefusionhq/crystalline-element",
   "author": "Jared White",
   "license": "MIT",
+  "private": false,
   "engines": {
     "node": ">= 10.13.0"
   },
