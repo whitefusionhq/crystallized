@@ -22,11 +22,10 @@
     "dist"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
-    "cross-env": "^7.0.2",
     "del-cli": "^3.0.1",
     "standard-version": "^8.0.0"
+  },
+  "dependencies": {
+    "lit-element": "^2.4.0"
   }
 }
