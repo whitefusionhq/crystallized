@@ -74,12 +74,12 @@ export class CrystallineElement < LitElement
     @registered_actions = []
     @nested_nodes = []
 
-    self.handle_nodechanges([{
+    handle_nodechanges([{
       type: :attributes,
       target: self
     }])
 
-    @node_observer = new MutationObserver(self.handle_nodechanges.bind(self))
+    @node_observer = MutationObserver.new(handle_nodechanges.bind(self))
     config = { attributes: true, childList: true, subtree: true }
     @node_observer.observe self, config
   end
