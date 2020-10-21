@@ -5,7 +5,7 @@
 
 [LitElement](https://lit-element.polymer-project.org) is "a simple base class for creating fast, lightweight web components".
 
-CrystallineElement is a subclass of LitElement which provides a number of useful enhancements inspired by [Stimulus](https://stimulusjs.org). It's written in Ruby-like syntax and compiled by [Ruby2JS](https://github.com/rubys/ruby2js). While it can be used in any Javascript context (since of course it's transpiled to ES6+ Javascript), it's primarily intended for use in Ruby2JS environments.
+CrystallineElement is a subclass of LitElement which provides a number of useful enhancements inspired by [Stimulus](https://stimulusjs.org). It's written in Ruby-like syntax and compiled by [Ruby2JS](https://github.com/rubys/ruby2js) as ES6+ Javascript. [Here's proof. 😄](https://unpkg.com/crystalline-element/dist/index.js) It works quite nicely in a Ruby2JS context, but it can be used in pure JS as well—even directly in buildless HTML using `script type="module"`.
 
 _Documentation coming soon…_
 
