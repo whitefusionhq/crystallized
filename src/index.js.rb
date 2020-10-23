@@ -155,6 +155,14 @@ export class CrystallineElement < LitElement
     end
   end
 
+  def first_updated()
+    handle_nodechanges([{
+      type: :child_list,
+      addedNodes: this.querySelectorAll("*"),
+      removedNodes: []
+    }])
+  end
+
   def render()
     html "<slot></slot>"
   end
