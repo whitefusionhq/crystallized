@@ -34,10 +34,10 @@ export class CrystallineElement < LitElement
     end if self.class.properties
 
     # button@target => button[custom-element-target='identifier']
-    targetized_selector = ->(selector) do
+    targetized_selector = ->(name, selector) do
       if selector == "@"
-        selector = selector.gsub("_", "-").gsub(/([^A-Z])([A-Z])/, "$1-$2").downcase()
-        "*[#{self.node_name}-target='#{selector}']"
+        name = name.gsub("_", "-").gsub(/([^A-Z])([A-Z])/, "$1-$2").downcase()
+        "*[#{self.node_name}-target='#{name}']"
       else
         selector.gsub(/@([a-z-]+)/, "[#{self.node_name}-target='$1']")
       end
@@ -46,7 +46,7 @@ export class CrystallineElement < LitElement
     # Add queries as instance properties
     self.class.targets.each_pair do |name, selector|
       if selector.is_a?(Array)
-        selector = targetized_selector(selector[0])
+        selector = targetized_selector(name, selector[0])
         Object.define_property(self, "_#{name}", {
           get: ->() do
             Array(self.query_selector_all(selector)).select do |node|
@@ -57,7 +57,7 @@ export class CrystallineElement < LitElement
           end
         })
       else
-        selector = targetized_selector(selector)
+        selector = targetized_selector(name, selector)
         Object.define_property(self, "_#{name}", {
           get: ->() do
             node = self.query_selector(selector)
