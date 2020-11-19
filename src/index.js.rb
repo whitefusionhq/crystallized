@@ -33,15 +33,20 @@ export class CrystallineElement < LitElement
       self[property] = config[:default]
     end if self.class.properties
 
-    # button@identifier => button[custom-element-id='identifier']
-    swap_in_id = ->(selector) do
-      selector.gsub(/@([a-z-]+)/, "[#{self.node_name}-id='$1']")
+    # button@target => button[custom-element-target='identifier']
+    targetized_selector = ->(selector) do
+      if selector == "@"
+        selector = selector.gsub("_", "-").gsub(/([^A-Z])([A-Z])/, "$1-$2").downcase()
+        "*[#{self.node_name}-target='#{selector}']"
+      else
+        selector.gsub(/@([a-z-]+)/, "[#{self.node_name}-target='$1']")
+      end
     end
 
     # Add queries as instance properties
-    self.class.queries.each_pair do |name, selector|
+    self.class.targets.each_pair do |name, selector|
       if selector.is_a?(Array)
-        selector = swap_in_id(selector[0])
+        selector = targetized_selector(selector[0])
         Object.define_property(self, "_#{name}", {
           get: ->() do
             Array(self.query_selector_all(selector)).select do |node|
@@ -52,7 +57,7 @@ export class CrystallineElement < LitElement
           end
         })
       else
-        selector = swap_in_id(selector)
+        selector = targetized_selector(selector)
         Object.define_property(self, "_#{name}", {
           get: ->() do
             node = self.query_selector(selector)
@@ -62,12 +67,12 @@ export class CrystallineElement < LitElement
           end
         })
       end
-    end if self.class.queries
+    end if self.class.targets
 
     self
   end
 
-  # Set up MutationObserver and get ready to look for event definitions
+  # Set up MutationObserver and get ready to look for action definitions
   def connected_callback()
     super
 
@@ -129,7 +134,7 @@ export class CrystallineElement < LitElement
     end
 
     unless @node_observer
-      # First run situation, check all child nodes
+      # It's a first run situation, so check all child nodes
       self.query_selector_all("*").each do |node|
         setup_listener(node, false)
       end
@@ -158,8 +163,8 @@ export class CrystallineElement < LitElement
   def first_updated()
     handle_nodechanges([{
       type: :child_list,
-      addedNodes: this.querySelectorAll("*"),
-      removedNodes: []
+      added_nodes: this.query_selector_all("*"),
+      removed_nodes: []
     }])
   end
 

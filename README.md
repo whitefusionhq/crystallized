@@ -15,6 +15,15 @@ You can build an entire suite of reactive frontend components just with Crystall
 
 _Documentation coming soon…_
 
+```js
+import { CrystallineElement } from "https://unpkg.com/crystalline-element@1.2.0/dist/index.js?module"
+import { html, css } from "https://unpkg.com/lit-element@^2.4.0?module"
+
+class MyComponent extends CrystallineElement {
+  // ...
+}
+```
+
 ## Contributing
 
 1. Fork it (https://github.com/whitefusionhq/crystalline-element/fork)
