@@ -16,12 +16,61 @@ You can build an entire suite of reactive frontend components just with Crystall
 _Documentation coming soon…_
 
 ```js
-import { CrystallineElement } from "https://unpkg.com/crystalline-element@1.2.0/dist/index.js?module"
-import { html, css } from "https://unpkg.com/lit-element@^2.4.0?module"
+// Javascript
+import { CrystallineElement } from "https://cdn.skypack.dev/crystalline-element"
+import { html, css } from "https://cdn.skypack.dev/lit-element"
 
 class MyComponent extends CrystallineElement {
+  static get styles {
+    return css`
+      p {
+        font-weight: bold;
+      }
+    `
+  }
+
+  // ...
+
+  render() {
+    return html`<p>Hello World!</p>`
+  }
+}
+
+MyComponent.define("my-component")
+
+class LightDomComponent extends CrystallineElement {
   // ...
 }
+
+LightDomComponent.define("light-dom", { shadowDom: false })
+```
+
+```ruby
+# Ruby
+import [ CrystallineElement ], from: "https://cdn.skypack.dev/crystalline-element"
+import [ html, css ], from: "https://cdn.skypack.dev/lit-element"
+
+class MyComponent < CrystallineElement
+  self.styles = css <<~CSS
+    p {
+      font-weight: bold;
+    }
+  CSS
+ 
+  define "my-component"
+
+  # ...
+
+  def render()
+    html "<p>Hello World!</p>"
+  end
+end
+
+class LightDomComponent < CrystallineElement
+  define "light-dom", shadow_dom: false
+
+  # ...
+end
 ```
 
 ## Contributing
