@@ -11,6 +11,8 @@ CrystallineElement is a base subclass of LitElement which provides a number of u
 
 CrystallineElement works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com)—providing features not normally found in web component libraries that assume they're only concerned with client-rendered markup and event handling.
 
+**Enjoy writing functional components?** While I am of the opinion classes work quite well most of the time, for very simple components or components constructed out of many separate `lit-html` snippets, you might long for a functional shorthand. In those cases, `crystallize` will do just the trick!
+
 You can build an entire suite of reactive frontend components just with CrystallineElement, along with a general strategy to enhance your site with a variety of emerging [web components](https://github.com/topics/web-components) and component libraries ([Shoelace](https://shoelace.style) for example).
 
 ----
@@ -19,7 +21,7 @@ _Documentation coming soon…_
 
 ```js
 // Javascript
-import { CrystallineElement } from "https://cdn.skypack.dev/crystalline-element"
+import { CrystallineElement, crystallize } from "https://cdn.skypack.dev/crystalline-element"
 import { html, css } from "https://cdn.skypack.dev/lit-element"
 
 class MyComponent extends CrystallineElement {
@@ -45,11 +47,21 @@ class LightDomComponent extends CrystallineElement {
 }
 
 LightDomComponent.define("light-dom", { shadowDom: false })
+
+const localVariable = "functional"
+
+crystallize("functional-component", {
+  properties: {
+    greeting: { type: String }
+  }
+}, comp => html`
+  <p>${comp.greeting}, you can write "${localVariable}" components with a handy shorthand!
+`)
 ```
 
 ```ruby
 # Ruby
-import [ CrystallineElement ], from: "https://cdn.skypack.dev/crystalline-element"
+import [ CrystallineElement, crystallize ], from: "https://cdn.skypack.dev/crystalline-element"
 import [ html, css ], from: "https://cdn.skypack.dev/lit-element"
 
 class MyComponent < CrystallineElement
@@ -72,6 +84,18 @@ class LightDomComponent < CrystallineElement
   define "light-dom", shadow_dom: false
 
   # ...
+end
+
+localVariable = "functional"
+
+crystallize("functional-component", 
+  properties: {
+    greeting: { type: String }
+  }
+) do |comp|
+  html <<~HTML
+    <p>#{comp.greeting}, you can write "#{localVariable}" components with a handy shorthand!
+  HTML
 end
 ```
 
