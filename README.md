@@ -9,7 +9,9 @@
 
 CrystallineElement is a base subclass of LitElement which provides a number of useful enhancements inspired by [Stimulus](https://stimulusjs.org). It's written in Ruby-like syntax and compiled by [Ruby2JS](https://github.com/rubys/ruby2js) as ES6+ Javascript. [Here's proof. 😄](https://unpkg.com/crystalline-element/dist/index.js) It works quite nicely in a Ruby2JS context, but it can be used in pure JS as well—even directly in buildless HTML using `script type="module"`.
 
-You can build an entire suite of reactive frontend components just with CrystallineElement, plus enhance your site with a variety of emerging [web components](https://github.com/topics/web-components) and component libraries ([Shoelace](https://shoelace.style) for example). In addition, CrystallineElement works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com).
+CrystallineElement works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com)—providing features not normally found in web component libraries that assume they're only concerned with client-rendered markup and event handling.
+
+You can build an entire suite of reactive frontend components just with CrystallineElement, along with a general strategy to enhance your site with a variety of emerging [web components](https://github.com/topics/web-components) and component libraries ([Shoelace](https://shoelace.style) for example).
 
 ----
 
