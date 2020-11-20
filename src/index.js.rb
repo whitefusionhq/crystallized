@@ -15,14 +15,22 @@ default_action_for_node = ->(node) do
 end
 
 export class CrystallineElement < LitElement
-  def self.define(name, options = {})
-    self.prototype.create_render_root = `"function() { return this }"` if options[:shadow_dom] == false
+  def self.define(name, options = {}, functional_component = nil)
+    klass = functional_component ? (`"class extends CrystallineElement {}"`) : self
 
-    if options[:pass_through]
-      self.render = ->() { ->() {} } # no-op
+    klass.prototype.create_render_root = `"function() { return this }"` if options[:shadow_dom] == false
+
+    if (options.properties)
+      klass.properties = options.properties
     end
 
-    custom_elements.define(name, self)
+    if options[:pass_through]
+      klass.prototype.render = ->() { ->() {} } # no-op
+    elsif functional_component
+      klass.prototype.render = `"function() { return functionalComponent(this) }"`
+    end
+
+    custom_elements.define(name, klass)
   end
 
   def initialize
@@ -171,4 +179,8 @@ export class CrystallineElement < LitElement
   def render()
     html "<slot></slot>"
   end
+end
+
+export def crystallize(name, options, component)
+  CrystallineElement.define(name, options, component)
 end
