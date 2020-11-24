@@ -17,6 +17,8 @@ You can build an entire suite of reactive frontend components just with Crystall
 
 ----
 
+**[Demo on CodePen](https://codepen.io/jaredcwhite/pen/yLJWRrq)**
+
 _Documentation coming soon…_
 
 ```js
