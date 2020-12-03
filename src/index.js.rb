@@ -25,7 +25,7 @@ export class CrystallineElement < LitElement
     end
 
     if options[:pass_through]
-      klass.prototype.render = ->() { ->() {} } # no-op
+      klass.prototype.render = undefined
     elsif functional_component
       klass.prototype.render = `"function() { return functionalComponent(this) }"`
     end
