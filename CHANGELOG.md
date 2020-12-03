@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/whitefusionhq/crystalline-element/compare/v1.4.0...v1.4.1) (2020-12-03)
+
+
+### Bug Fixes
+
+* Change pass through render to undefined ([f8bb813](https://github.com/whitefusionhq/crystalline-element/commit/f8bb81317ab6f1479d3a9d6fbdc0f3a5a83c369c))
+
 ## [1.4.0](https://github.com/whitefusionhq/crystalline-element/compare/v1.3.2...v1.4.0) (2020-11-20)
 
 

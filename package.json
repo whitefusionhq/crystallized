@@ -1,6 +1,6 @@
 {
   "name": "crystalline-element",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A subclass of LitElement built with Ruby2JS in mind.",
   "main": "dist/index.js",
   "module": "dist/index.js",
