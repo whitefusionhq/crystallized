@@ -21,7 +21,7 @@ You can build an entire suite of reactive frontend components just with Crystall
 
 _Documentation coming soon…_
 
-# JavaScript Example
+## JavaScript Example
 
 ```js
 import { CrystallineElement, crystallize } from "https://cdn.skypack.dev/crystalline-element"
@@ -62,7 +62,7 @@ crystallize("functional-component", {
 `)
 ```
 
-# Ruby Example
+## Ruby Example
 
 ```ruby
 import [ CrystallineElement, crystallize ], from: "https://cdn.skypack.dev/crystalline-element"
