@@ -143,7 +143,7 @@ export class CrystallineElement < LitElement
 
     unless @node_observer
       # It's a first run situation, so check all child nodes
-      self.query_selector_all("*").each do |node|
+      self.query_selector_all("[#{action_attr}]").each do |node|
         setup_listener(node, false)
       end
     end
@@ -154,6 +154,9 @@ export class CrystallineElement < LitElement
         change.added_nodes.each do |node|
           next unless node.node_type == 1 # only process element nodes
           setup_listener(node, false)
+          node.query_selector_all("[#{action_attr}]").each do |inside_node|
+            setup_listener(inside_node, false)
+          end
         end
         change.removed_nodes.each do |node|
           # clear out removed nested nodes
