@@ -19,16 +19,18 @@ export class CrystallineElement < LitElement
   def self.define(name, options = {}, functional_component = nil)
     klass = functional_component ? (`"class extends CrystallineElement {}"`) : self
 
-    klass.prototype.create_render_root = `"function() { return this }"` if options[:shadow_dom] == false
-
-    if (options.properties)
-      klass.properties = options.properties
+    if options[:shadow_dom] == false || options[:pass_through]
+      klass.prototype.create_render_root = `"function() { return this }"` 
     end
 
     if options[:pass_through]
       klass.prototype.render = proc { nothing }
     elsif functional_component
       klass.prototype.render = `"function() { return functionalComponent(this) }"`
+    end
+
+    if (options.properties)
+      klass.properties = options.properties
     end
 
     custom_elements.define(name, klass)
