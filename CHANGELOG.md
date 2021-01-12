@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.3](https://github.com/whitefusionhq/crystalline-element/compare/v1.4.2...v1.4.3) (2021-01-12)
+
+
+### Bug Fixes
+
+* use nothing from lit-html for passthrough ([8de4b9a](https://github.com/whitefusionhq/crystalline-element/commit/8de4b9adf6001faa1d885d84386ae3b9ee6ead18))
+
 ### [1.4.2](https://github.com/whitefusionhq/crystalline-element/compare/v1.4.1...v1.4.2) (2021-01-01)
 
 
