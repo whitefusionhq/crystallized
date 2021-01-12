@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/whitefusionhq/crystalline-element/compare/v1.4.4...v1.5.0) (2021-01-12)
+
+
+### Features
+
+* Determine render passthrough without needing explicit option ([6840212](https://github.com/whitefusionhq/crystalline-element/commit/68402121add1d31742937419eed07d11a6ca0fc0))
+
 ### [1.4.4](https://github.com/whitefusionhq/crystalline-element/compare/v1.4.3...v1.4.4) (2021-01-12)
 
 
