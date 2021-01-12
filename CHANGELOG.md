@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.4](https://github.com/whitefusionhq/crystalline-element/compare/v1.4.3...v1.4.4) (2021-01-12)
+
+
+### Features
+
+* Ensure passThrough option will set shadowDom false automatically ([9f10923](https://github.com/whitefusionhq/crystalline-element/commit/9f1092380b83fe7787e8448f554fd3676b9e2ad3))
+
 ### [1.4.3](https://github.com/whitefusionhq/crystalline-element/compare/v1.4.2...v1.4.3) (2021-01-12)
 
 
