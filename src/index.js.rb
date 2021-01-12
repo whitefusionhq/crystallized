@@ -1,4 +1,5 @@
 import [ LitElement, html ], from: "lit-element"
+import [ nothing ], from: "lit-html"
 
 # Lambda for determining default node action
 default_action_for_node = ->(node) do
@@ -25,7 +26,7 @@ export class CrystallineElement < LitElement
     end
 
     if options[:pass_through]
-      klass.prototype.render = undefined
+      klass.prototype.render = proc { nothing }
     elsif functional_component
       klass.prototype.render = `"function() { return functionalComponent(this) }"`
     end
