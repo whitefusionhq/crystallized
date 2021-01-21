@@ -1,5 +1,4 @@
 import [ LitElement, html ], from: "lit-element"
-import [ nothing ], from: "lit-html"
 
 # Lambda for determining default node action
 default_action_for_node = ->(node) do
@@ -20,14 +19,14 @@ export class CrystallineElement < LitElement
     klass = functional_component ? (`"class extends CrystallineElement {}"`) : self
 
     if functional_component
-      klass.prototype.render = `"function() { return functionalComponent(this) }"`
+      klass.define_method(:render) { functional_component(self) }
     end
 
     if options[:shadow_dom] == false
-      klass.prototype.create_render_root = `"function() { return this }"`
+      klass.define_method(:create_render_root) { self }
     else
-      if !klass.prototype.has_own_property(:render)
-        klass.prototype.render = proc { html "<slot></slot>" }
+      if !klass.method_defined?(:render, false)
+        klass.define_method(:render) { html "<slot></slot>" }
       end
     end
 

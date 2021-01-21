@@ -1,19 +1,24 @@
+GIT
+  remote: https://github.com/ruby2js/ruby2js.git
+  revision: 71fc1113a80e268cbcc6dc70a382be7df7619717
+  specs:
+    ruby2js (3.6.1)
+      parser
+      regexp_parser
+
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.1)
-    parser (2.7.2.0)
+    parser (3.0.0.0)
       ast (~> 2.4.1)
-    regexp_parser (1.8.2)
-    ruby2js (3.4.0)
-      parser
-      regexp_parser
+    regexp_parser (2.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  ruby2js
+  ruby2js!
 
 BUNDLED WITH
    2.1.4

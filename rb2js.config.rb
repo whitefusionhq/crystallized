@@ -9,6 +9,7 @@ module Ruby2JS
     def self.options
       # Change the options for your configuration here:
       {
+        binding: binding,
         eslevel: 2021,
         include: :class,
         underscored_private: true
