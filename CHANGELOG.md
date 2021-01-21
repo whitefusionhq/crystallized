@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.5.1](https://github.com/whitefusionhq/crystalline-element/compare/v1.5.0...v1.5.1) (2021-01-21)
 
+* chore: Utilize latest Ruby2JS features in `define` class method
+
 ## [1.5.0](https://github.com/whitefusionhq/crystalline-element/compare/v1.4.4...v1.5.0) (2021-01-12)
 
 
