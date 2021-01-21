@@ -16,7 +16,7 @@ end
 
 export class CrystallineElement < LitElement
   def self.define(name, options = {}, functional_component = nil)
-    klass = functional_component ? (`"class extends CrystallineElement {}"`) : self
+    klass = functional_component ? `"class extends CrystallineElement {}"` : self
 
     if functional_component
       klass.define_method(:render) { functional_component(self) }
