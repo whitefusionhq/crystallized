@@ -34,7 +34,21 @@ export class CrystallineElement < LitElement
       klass.properties = options.properties
     end
 
-    custom_elements.define(name, klass)
+    begin  
+      custom_elements.define(name, klass)
+    rescue Error => e
+      console.warn("#{name} already registered", e)
+    end
+  end
+
+  def self.property(name, type, options = {})
+    self.properties ||= {}
+    self.properties[name] = {type: type, **options}
+  end
+
+  def self.target(name, selector)
+    self.targets ||= {}
+    self.targets[name] = selector
   end
 
   def initialize

@@ -10,7 +10,7 @@ module Ruby2JS
       # Change the options for your configuration here:
       {
         binding: binding,
-        eslevel: 2021,
+        eslevel: 2020,
         include: :class,
         underscored_private: true
       }
