@@ -7,7 +7,7 @@
 
 [LitElement](https://lit-element.polymer-project.org) is "a simple base class for creating fast, lightweight web components".
 
-CrystallineElement is a base subclass of LitElement which provides a number of useful enhancements inspired by [Stimulus](https://stimulusjs.org). It's written in Ruby-like syntax and compiled by [Ruby2JS](https://github.com/rubys/ruby2js) as ES6+ Javascript. [Here's proof. 😄](https://unpkg.com/crystalline-element/dist/index.js) It works quite nicely in a Ruby2JS context, but it can be used in pure JS as well—even directly in buildless HTML using `script type="module"`.
+CrystallineElement is a base subclass of LitElement which provides a number of useful enhancements inspired by [Stimulus](https://stimulusjs.org). It's written in Ruby-like syntax and compiled by [Ruby2JS](https://github.com/ruby2js/ruby2js) as ES6+ Javascript. [Here's proof. 😄](https://unpkg.com/crystalline-element/dist/index.js) It works quite well in a Ruby2JS context with a number of syntax benefits, but it can be used in pure JS as well—even directly in buildless HTML using `script type="module"`.
 
 CrystallineElement works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com)—providing features not normally found in web component libraries that assume they're only concerned with client-rendered markup and event handling.
 
@@ -19,48 +19,7 @@ You can build an entire suite of reactive frontend components just with Crystall
 
 **[Demo on CodePen](https://codepen.io/jaredcwhite/pen/yLJWRrq)**
 
-_Documentation coming soon…_
-
-## JavaScript Example
-
-```js
-import { CrystallineElement, crystallize } from "https://cdn.skypack.dev/crystalline-element"
-import { html, css } from "https://cdn.skypack.dev/lit-element"
-
-class MyComponent extends CrystallineElement {
-  static get styles {
-    return css`
-      p {
-        font-weight: bold;
-      }
-    `
-  }
-
-  // ...
-
-  render() {
-    return html`<p>Hello World!</p>`
-  }
-}
-
-MyComponent.define("my-component")
-
-class LightDomComponent extends CrystallineElement {
-  // ...
-}
-
-LightDomComponent.define("light-dom", { shadowDom: false })
-
-const localVariable = "functional"
-
-crystallize("functional-component", {
-  properties: {
-    greeting: { type: String }
-  }
-}, comp => html`
-  <p>${comp.greeting}, you can write "${localVariable}" components with a handy shorthand!
-`)
-```
+_More documentation coming soon…_
 
 ## Ruby Example
 
@@ -69,6 +28,8 @@ import [ CrystallineElement, crystallize ], from: "https://cdn.skypack.dev/cryst
 import [ html, css ], from: "https://cdn.skypack.dev/lit-element"
 
 class MyComponent < CrystallineElement
+  property :name, String
+
   self.styles = css <<~CSS
     p {
       font-weight: bold;
@@ -80,7 +41,7 @@ class MyComponent < CrystallineElement
   # ...
 
   def render()
-    html "<p>Hello World!</p>"
+    html "<p>Hello World! Nice to meet you, #{self.name}</p>"
   end
 end
 
@@ -101,6 +62,53 @@ crystallize("functional-component",
     <p>#{comp.greeting}, you can write "#{localVariable}" components with a handy shorthand!
   HTML
 end
+```
+
+## JavaScript Example
+
+```js
+import { CrystallineElement, crystallize } from "https://cdn.skypack.dev/crystalline-element"
+import { html, css } from "https://cdn.skypack.dev/lit-element"
+
+class MyComponent extends CrystallineElement {
+  static get properties {
+    return {
+      name: { type: String }
+    }
+  }
+
+  static get styles {
+    return css`
+      p {
+        font-weight: bold;
+      }
+    `
+  }
+
+  // ...
+
+  render() {
+    return html`<p>Hello World! Nice to meet you, ${this.name}</p>`
+  }
+}
+
+MyComponent.define("my-component")
+
+class LightDomComponent extends CrystallineElement {
+  // ...
+}
+
+LightDomComponent.define("light-dom", { shadowDom: false })
+
+const localVariable = "functional"
+
+crystallize("functional-component", {
+  properties: {
+    greeting: { type: String }
+  }
+}, comp => html`
+  <p>${comp.greeting}, you can write "${localVariable}" components with a handy shorthand!
+`)
 ```
 
 ## Contributing
