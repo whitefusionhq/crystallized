@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/whitefusionhq/crystalline-element/compare/v1.5.2...v1.6.0) (2021-02-15)
+
+
+### Features
+
+* Ruby-friendly `property` and `target` class methods ([e1c2f0a](https://github.com/whitefusionhq/crystalline-element/commit/e1c2f0ab9e3601db4a47e3a14c4103846a0ea19b))
+
 ### [1.5.2](https://github.com/whitefusionhq/crystalline-element/compare/v1.5.1...v1.5.2) (2021-01-21)
 
 
