@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/whitefusionhq/crystalline-element/compare/v1.6.0...v1.7.0) (2021-02-16)
+
+
+### Features
+
+* add stylesheet shorthand for Ruby2JS users ([4ed2207](https://github.com/whitefusionhq/crystalline-element/commit/4ed2207ec3f900b7b883bcf8049a522dea6279ea))
+
 ## [1.6.0](https://github.com/whitefusionhq/crystalline-element/compare/v1.5.2...v1.6.0) (2021-02-15)
 
 
