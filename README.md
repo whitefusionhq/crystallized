@@ -30,15 +30,13 @@ import [ html, css ], from: "https://cdn.skypack.dev/lit-element"
 class MyComponent < CrystallineElement
   property :name, String
 
-  self.styles = css <<~CSS
+  stylesheet css <<~CSS
     p {
       font-weight: bold;
     }
   CSS
  
-  define "my-component"
-
-  # ...
+  define "my-component" # always add below properties, stylesheets, etc.
 
   def render()
     html "<p>Hello World! Nice to meet you, #{self.name}</p>"
@@ -84,8 +82,6 @@ class MyComponent extends CrystallineElement {
       }
     `
   }
-
-  // ...
 
   render() {
     return html`<p>Hello World! Nice to meet you, ${this.name}</p>`

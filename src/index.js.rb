@@ -41,9 +41,15 @@ export class CrystallineElement < LitElement
     end
   end
 
+  ### Useful shorthands for Ruby2JS users:
+
   def self.property(name, type, options = {})
     self.properties ||= {}
     self.properties[name] = {type: type, **options}
+  end
+
+  def self.stylesheet(cssresult)
+    self.styles = cssresult
   end
 
   def self.target(name, selector)
@@ -51,6 +57,7 @@ export class CrystallineElement < LitElement
     self.targets[name] = selector
   end
 
+  # Set up all the properties and targets
   def initialize
     super
 
