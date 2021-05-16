@@ -7,11 +7,13 @@
 
 **[Lit](https://lit-element.polymer-project.org)**: Simple. Fast. Web Components.
 
-**Crystalline**: a collection of Lit enhancements inspired by [Stimulus](https://stimulusjs.org) and written in [Ruby2JS](https://github.com/ruby2js/ruby2js). Crystalline includes:
+**Crystalline**: a collection of Lit enhancements inspired by [Stimulus](https://stimulusjs.org) and written in [Ruby2JS](https://www.ruby2js.com). Crystalline includes:
 
 * `DeclarativeActionsController` - lets you add action attributes to elements in the light DOM as a way of providing declarative event handlers.
 
-* `CrystallineElement` - a base subclass of LitElement which provides syntax benefits for Ruby2JS users.
+* `TargetsController` - lets you easily query child nodes in the light DOM using either selectors or explicit attribute-based identifies. _Docs coming soon!_
+
+* `CrystallineElement` - a base subclass of LitElement which provides syntax benefits for Ruby2JS users as well as includes the two controllers above.
 
 Crystalline uses Ruby 3 and Ruby2JS to compile to modern ES6+ JavaScript. Crystalline can be used with any modern JS bundler as well as directly in buildless HTML using `script type="module"`.
 
@@ -43,7 +45,7 @@ It's very simple to add this controller to any Lit 2 component. First let's set 
 
 ```js
 import { LitElement, html } from "lit"
-import { DeclarativeActionsController } from "crystalline-element/dist/controllers"
+import { DeclarativeActionsController } from "crystalline-element/controllers"
 
 class TestElement extends LitElement {
   actions = new DeclarativeActionsController(this)
