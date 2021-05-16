@@ -70,7 +70,7 @@ export class CrystallineElement < LitElement
         Object.define_property(self, "_#{name}", {
           get: ->() do
             Array(self.query_selector_all(selector)).select do |node|
-              node&.closest(self.node_name.downcase()) == self
+              node.closest(self.node_name.downcase()) == self
             end
           end
         })
@@ -79,7 +79,7 @@ export class CrystallineElement < LitElement
         Object.define_property(self, "_#{name}", {
           get: ->() do
             node = self.query_selector(selector)
-            node if node&.closest(self.node_name.downcase()) == self
+            node && node.closest(self.node_name.downcase()) == self ? node : null
           end
         })
       end
