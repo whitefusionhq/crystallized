@@ -2,6 +2,8 @@ import { fixture, assert, aTimeout, html as testhtml } from "@open-wc/testing"
 import { CrystallineElement, crystallize } from "../dist/index"
 import { html, css } from "lit"
 
+// Fixtures
+
 class MyComponent extends CrystallineElement {
   static get properties() {
     return {
@@ -21,7 +23,6 @@ class MyComponent extends CrystallineElement {
     return html`<p>Hello World! Nice to meet you, ${this.name}</p>`
   }
 }
-
 MyComponent.define("my-component")
 
 const localVariable = "functional"
@@ -34,6 +35,8 @@ crystallize("functional-component", {
   <p>${comp.greeting}, you can write "${localVariable}" components with a handy shorthand!</p>
 `)
 
+// Tests
+
 describe("CrystallineElement", () => {
   it("renders state", async () => {
     const el = await fixture(testhtml`
@@ -42,5 +45,14 @@ describe("CrystallineElement", () => {
 
     assert.include(el.shadowRoot.innerHTML, "<p>Hello World! Nice to meet you")
     assert.include(el.shadowRoot.innerHTML, "Test Runner</p>")
+  })
+
+  it("works with a functional interface", async() => {
+    const el = await fixture(testhtml`
+      <functional-component greeting="Bring on the func"></functional-component>
+    `)
+
+    assert.include(el.shadowRoot.innerHTML, "Bring on the func, you can write")
+    assert.include(el.shadowRoot.innerHTML, "functional\" components")
   })
 })

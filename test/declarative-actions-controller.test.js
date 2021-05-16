@@ -3,6 +3,8 @@ import { LitElement, html } from "lit"
 
 import { DeclarativeActionsController } from "../dist/controllers"
 
+// Fixtures
+
 class TestElement extends LitElement {
   actions = new DeclarativeActionsController(this)
 
@@ -18,6 +20,8 @@ class TestElement extends LitElement {
   }
 }
 customElements.define("test-element", TestElement)
+
+// Tests
 
 describe("DeclarativeActionsController", () => {
   it("handles click properly", async () => {
