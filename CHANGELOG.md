@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.3](https://github.com/whitefusionhq/crystalline-element/compare/v2.0.2...v2.0.3) (2021-05-16)
+
+
+### Bug Fixes
+
+* avoid optional chaining ([b365579](https://github.com/whitefusionhq/crystalline-element/commit/b36557943ee6ae6a81a98f90ddf477e8b6d10f1e))
+
 ### [2.0.2](https://github.com/whitefusionhq/crystalline-element/compare/v2.0.1...v2.0.2) (2021-05-16)
 
 
