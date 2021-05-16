@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/whitefusionhq/crystalline-element/compare/v1.7.0...v2.0.0) (2021-05-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgraded dependency to Lit 2.0
+
+### Features
+
+* Provide declarative actions as a controller ([9a00484](https://github.com/whitefusionhq/crystalline-element/commit/9a0048496f7045b956fe5abbfdd65205caae7eb2))
+
 ## [1.7.0](https://github.com/whitefusionhq/crystalline-element/compare/v1.6.0...v1.7.0) (2021-02-16)
 
 
