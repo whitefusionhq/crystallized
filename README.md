@@ -29,7 +29,7 @@ It's very simple to add this controller to any Lit 2 component. First let's set 
 
 ```js
 import { LitElement, html } from "lit"
-import { DeclarativeActionsController } from "crystalline-element/controllers"
+import { DeclarativeActionsController } from "crystalline-element/dist/controllers"
 
 class TestElement extends LitElement {
   actions = new DeclarativeActionsController(this)
