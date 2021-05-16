@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/whitefusionhq/crystalline-element/compare/v2.0.3...v2.1.0) (2021-05-16)
+
+
+### Features
+
+* Extract targets functionality into its own TargetsController ([b12af3e](https://github.com/whitefusionhq/crystalline-element/commit/b12af3e8f17706662647aff33185af02a1ed0044))
+
 ### [2.0.3](https://github.com/whitefusionhq/crystalline-element/compare/v2.0.2...v2.0.3) (2021-05-16)
 
 
