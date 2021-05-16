@@ -104,4 +104,43 @@ class DeclarativeActionsController
   end
 end
 
-export [ DeclarativeActionsController ]
+# Targets let you query for elements in the light DOM
+class TargetsController
+  def initialize(host)
+    @host = host
+    @node_name = @host.node_name
+
+    # Add queries as instance properties
+    @host.class.targets.each_pair do |name, selector|
+      if selector.is_a?(Array)
+        selector = targetized_selector(name, selector[0])
+        Object.define_property(@host, "_#{name}", {
+          get: ->() do
+            Array(@host.query_selector_all(selector)).select do |node|
+              node.closest(@node_name) == @host
+            end
+          end
+        })
+      else
+        selector = targetized_selector(name, selector)
+        Object.define_property(@host, "_#{name}", {
+          get: ->() do
+            node = @host.query_selector(selector)
+            node && node.closest(@node_name) == @host ? node : null
+          end
+        })
+      end
+    end if @host.class.targets
+  end
+
+  def targetized_selector(name, selector)
+    if selector == "@"
+      name = name.gsub("_", "-").gsub(/([^A-Z])([A-Z])/, "$1-$2").downcase()
+      "*[#{@node_name}-target='#{name}']"
+    else
+      selector.gsub(/@([a-z-]+)/, "[#{@node_name}-target='$1']")
+    end
+  end
+end
+
+export [ DeclarativeActionsController, TargetsController ]

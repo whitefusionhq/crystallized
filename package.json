@@ -1,7 +1,7 @@
 {
   "name": "crystalline-element",
   "version": "2.0.3",
-  "description": "A subclass of LitElement built with Ruby2JS in mind.",
+  "description": "A collection of Lit enhancements inspired by Stimulus and written in Ruby2JS.",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "type": "module",
@@ -17,6 +17,10 @@
     "build": "bundle exec ./build_source.rb",
     "test": "yarn run build && web-test-runner --node-resolve",
     "release": "yarn run build && standard-version"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./controllers": "./dist/controllers.js"
   },
   "files": [
     "dist"

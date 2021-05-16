@@ -1,5 +1,5 @@
 import [ LitElement, html ], from: "lit"
-import [ DeclarativeActionsController ], from: "./controllers"
+import [ DeclarativeActionsController, TargetsController ], from: "./controllers"
 
 export class CrystallineElement < LitElement
   def self.define(name, options = {}, functional_component = nil)
@@ -46,45 +46,15 @@ export class CrystallineElement < LitElement
   def initialize
     super
 
-    @actions = DeclarativeActionsController.new(self)
+    @actions_controller = DeclarativeActionsController.new(self)
+    @targets_controller = TargetsController.new(self)
 
     # Set initial default values
     self.class.properties.each_pair do |property, config|
       self[property] = config[:default]
     end if self.class.properties
 
-    # button@target => button[custom-element-target='identifier']
-    targetized_selector = ->(name, selector) do
-      if selector == "@"
-        name = name.gsub("_", "-").gsub(/([^A-Z])([A-Z])/, "$1-$2").downcase()
-        "*[#{self.node_name}-target='#{name}']"
-      else
-        selector.gsub(/@([a-z-]+)/, "[#{self.node_name}-target='$1']")
-      end
-    end
-
-    # Add queries as instance properties
-    self.class.targets.each_pair do |name, selector|
-      if selector.is_a?(Array)
-        selector = targetized_selector(name, selector[0])
-        Object.define_property(self, "_#{name}", {
-          get: ->() do
-            Array(self.query_selector_all(selector)).select do |node|
-              node.closest(self.node_name.downcase()) == self
-            end
-          end
-        })
-      else
-        selector = targetized_selector(name, selector)
-        Object.define_property(self, "_#{name}", {
-          get: ->() do
-            node = self.query_selector(selector)
-            node && node.closest(self.node_name.downcase()) == self ? node : null
-          end
-        })
-      end
-    end if self.class.targets
-
+    # Keep explicit return
     self
   end
 end
