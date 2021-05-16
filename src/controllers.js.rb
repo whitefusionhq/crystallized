@@ -46,9 +46,7 @@ class DeclarativeActionsController
 
     # Lambda to set up event listeners
     setup_listener = ->(node, only_host_node) do
-      next if !only_host_node && Array.from(
-        @host.query_selector_all(host_name)
-      ).select do |el|
+      next if !only_host_node && Array(@host.query_selector_all(host_name)).select do |el|
         el.contains? node
       end.length > 0 # make sure node isn't inside a nested tag
 

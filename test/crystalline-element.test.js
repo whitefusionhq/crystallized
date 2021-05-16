@@ -25,6 +25,16 @@ class MyComponent extends CrystallineElement {
 }
 MyComponent.define("my-component")
 
+class TargetsComponent extends CrystallineElement {
+  static get targets() {
+    return {
+      "button": "button",
+      "buttons": ["button"]
+    }
+  }
+}
+TargetsComponent.define("targets-component", {shadowDom: true})
+
 const localVariable = "functional"
 
 crystallize("functional-component", {
@@ -54,5 +64,20 @@ describe("CrystallineElement", () => {
 
     assert.include(el.shadowRoot.innerHTML, "Bring on the func, you can write")
     assert.include(el.shadowRoot.innerHTML, "functional\" components")
+  })
+
+  it("supports targets", async() => {
+    const el = await fixture(testhtml`
+      <targets-component>
+        <button id="outer">Outer Button</button>
+        <targets-component>
+          <button id="inner">Inner Button</button>
+        </targets-component>
+      </targets-component>
+    `)
+
+    assert.equal(el._button, el.querySelector("#outer"))
+    assert.equal(el._buttons.length, 1)
+    assert.equal(el._buttons[0], el.querySelector("#outer"))
   })
 })

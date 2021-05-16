@@ -23,7 +23,21 @@ You can build an entire suite of reactive frontend components just with Crystall
 
 ----
 
+## Installing
+
+```sh
+yarn add crystalline-element
+```
+
+or
+
+```
+npm i crystalline-element
+```
+
 ## Using DeclarativeActionsController
+
+[![Demo on CodePen](https://img.shields.io/badge/Demo%20Site-blue?style=for-the-badge&logo=codepen)](https://codepen.io/jaredcwhite/pen/ExWydPp)
 
 It's very simple to add this controller to any Lit 2 component. First let's set up a new test component:
 
@@ -70,7 +84,7 @@ In addition, actions do pass component boundaries. In other words, if you were t
 
 ## Using CrystallineElement
 
-**[Demo on CodePen](https://codepen.io/jaredcwhite/pen/yLJWRrq)**
+[![Demo on CodePen](https://img.shields.io/badge/Demo%20Site-blue?style=for-the-badge&logo=codepen)](https://codepen.io/jaredcwhite/pen/yLJWRrq)
 
 CrystallineElement is very easy to use. Simply import it, along with helpers from Lit directly, and you can start writing new web components.
 
@@ -162,6 +176,20 @@ crystallize("functional-component", {
 `)
 ```
 
+----
+
+## Ruby2JS
+
+Requires Ruby 3.0. A Ruby version manager like `rbenv` is recommended. Run `bundle install` to set up the Ruby gems.
+
+Run `yarn build` (which gets run by the `test` and `release` script automatically) to transpile the Ruby `src` files to the JS `dist` folder.
+
+## Testing
+
+Crystalline uses the [Modern Web Test Runner](https://modern-web.dev/guides/test-runner/getting-started/) and [helpers from Open WC](https://open-wc.org/docs/testing/testing-package/) for its test suite.
+
+Run `yarn test` to run the test suite.
+
 ## Contributing
 
 1. Fork it (https://github.com/whitefusionhq/crystalline-element/fork)
@@ -174,9 +202,9 @@ crystallize("functional-component", {
 
 MIT
 
-[npm]: https://img.shields.io/npm/v/crystalline-element.svg
+[npm]: https://img.shields.io/npm/v/crystalline-element.svg?style=for-the-badge
 [npm-url]: https://npmjs.com/package/crystalline-element
-[node]: https://img.shields.io/node/v/crystalline-element.svg
+[node]: https://img.shields.io/node/v/crystalline-element.svg?style=for-the-badge
 [node-url]: https://nodejs.org
 [bundlephobia]: https://badgen.net/bundlephobia/minzip/crystalline-element
 [bundlephobia-url]: https://bundlephobia.com/result?p=crystalline-element
