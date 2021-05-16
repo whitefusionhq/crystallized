@@ -1,15 +1,21 @@
-# ❄️ CrystallineElement
+# ❄️ Crystalline
 
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
 [![bundlephobia][bundlephobia]][bundlephobia-url]
 
 
-[LitElement](https://lit-element.polymer-project.org) is "a simple base class for creating fast, lightweight web components".
+**[Lit](https://lit-element.polymer-project.org)**: Simple. Fast. Web Components.
 
-CrystallineElement is a base subclass of LitElement which provides a number of useful enhancements inspired by [Stimulus](https://stimulusjs.org). It's written in Ruby-like syntax and compiled by [Ruby2JS](https://github.com/ruby2js/ruby2js) as ES6+ Javascript. [Here's proof. 😄](https://unpkg.com/crystalline-element/dist/index.js) It works quite well in a Ruby2JS context with a number of syntax benefits, but it can be used in pure JS as well—even directly in buildless HTML using `script type="module"`.
+**Crystalline**: a collection of Lit enhancements inspired by [Stimulus](https://stimulusjs.org) and written in [Ruby2JS](https://github.com/ruby2js/ruby2js). Crystalline includes:
 
-CrystallineElement works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com)—providing features not normally found in web component libraries that assume they're only concerned with client-rendered markup and event handling.
+* `DeclarativeActionsController` - lets you add action attributes to elements in the light DOM as a way of providing declarative event handlers.
+
+* `CrystallineElement` - a base subclass of LitElement which provides syntax benefits for Ruby2JS users.
+
+Crystalline uses Ruby 3 and Ruby2JS to compile to modern ES6+ JavaScript. Crystalline can be used with any modern JS bundler as well as directly in buildless HTML using `script type="module"`.
+
+Crystalline works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com)—providing features not normally found in web component libraries that assume they're only concerned with client-rendered markup and event handling.
 
 **Enjoy writing functional components?** While I am of the opinion classes work quite well most of the time, for very simple components or components constructed out of many separate `lit-html` snippets, you might long for a functional shorthand. In those cases, `crystallize` will do just the trick!
 
@@ -17,15 +23,64 @@ You can build an entire suite of reactive frontend components just with Crystall
 
 ----
 
+## Using DeclarativeActionsController
+
+It's very simple to add this controller to any Lit 2 component. First let's set up a new test component:
+
+```js
+import { LitElement, html } from "lit"
+import { DeclarativeActionsController } from "crystalline-element/controllers"
+
+class TestElement extends LitElement {
+  actions = new DeclarativeActionsController(this)
+
+  clickMe() {
+    this.shadowRoot.querySelector("test-msg").textContent = "clicked!"
+  }
+
+  render() {
+    return html`
+      <slot></slot>
+      <test-msg></test-msg>
+    `
+  }
+}
+customElements.define("test-element", TestElement)
+```
+
+You'll notice that currently nothing actually calls the `clickMe` method. Don't worry! We'll declaratively handle that in our regular HTML template:
+
+```html
+<test-element>
+  <article>
+    <button test-element-action="clickMe">Button</button>
+  </article>
+</test-element>
+```
+
+The tag name of the component (`text-element`) plus `action` sets up the event handler via an action attribute, with the method name `clickMe` being the value of the attribute. This is shorthand for `click->clickMe`. The controller defaults to `click` if no event type is specified (with a few exceptions, such as `submit` for forms and `input`  or `change` for various form controls).
+
+Because `DeclarativeActionsController` uses a [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to keep an eye on HTML in the light DOM, at any time you can update the markup dynamically and actions will work as expected.
+
+In addition, actions do pass component boundaries. In other words, if you were to add a `test-element` inside of another `test-element`, the action within the nested `test-element` would only call the method for that nested component.
+
+**Note:** actions only work within light DOM and do not traverse shadow trees of child components.
+
+----
+
+## Using CrystallineElement
+
 **[Demo on CodePen](https://codepen.io/jaredcwhite/pen/yLJWRrq)**
+
+CrystallineElement is very easy to use. Simply import it, along with helpers from Lit directly, and you can start writing new web components.
 
 _More documentation coming soon…_
 
-## Ruby Example
+### Ruby Example
 
 ```ruby
 import [ CrystallineElement, crystallize ], from: "https://cdn.skypack.dev/crystalline-element"
-import [ html, css ], from: "https://cdn.skypack.dev/lit-element"
+import [ html, css ], from: "https://cdn.skypack.dev/lit"
 
 class MyComponent < CrystallineElement
   property :name, String
@@ -43,8 +98,8 @@ class MyComponent < CrystallineElement
   end
 end
 
-class LightDomComponent < CrystallineElement
-  define "light-dom", shadow_dom: false
+class LightDomOnlyComponent < CrystallineElement
+  define "light-dom-only", shadow_dom: false
 
   # ...
 end
@@ -57,25 +112,25 @@ crystallize("functional-component",
   }
 ) do |comp|
   html <<~HTML
-    <p>#{comp.greeting}, you can write "#{localVariable}" components with a handy shorthand!
+    <p>#{comp.greeting}, you can write "#{localVariable}" components with a handy shorthand!</p>
   HTML
 end
 ```
 
-## JavaScript Example
+### JavaScript Example
 
 ```js
 import { CrystallineElement, crystallize } from "https://cdn.skypack.dev/crystalline-element"
-import { html, css } from "https://cdn.skypack.dev/lit-element"
+import { html, css } from "https://cdn.skypack.dev/lit"
 
 class MyComponent extends CrystallineElement {
-  static get properties {
+  static get properties() {
     return {
       name: { type: String }
     }
   }
 
-  static get styles {
+  static get styles() {
     return css`
       p {
         font-weight: bold;
@@ -90,11 +145,11 @@ class MyComponent extends CrystallineElement {
 
 MyComponent.define("my-component")
 
-class LightDomComponent extends CrystallineElement {
+class LightDomOnlyComponent extends CrystallineElement {
   // ...
 }
 
-LightDomComponent.define("light-dom", { shadowDom: false })
+LightDomComponent.define("light-dom-only", { shadowDom: false })
 
 const localVariable = "functional"
 
@@ -103,7 +158,7 @@ crystallize("functional-component", {
     greeting: { type: String }
   }
 }, comp => html`
-  <p>${comp.greeting}, you can write "${localVariable}" components with a handy shorthand!
+  <p>${comp.greeting}, you can write "${localVariable}" components with a handy shorthand!</p>
 `)
 ```
 
