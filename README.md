@@ -76,9 +76,9 @@ The tag name of the component (`text-element`) plus `action` sets up the event h
 
 Because `DeclarativeActionsController` uses a [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to keep an eye on HTML in the light DOM, at any time you can update the markup dynamically and actions will work as expected.
 
-In addition, actions do pass component boundaries. In other words, if you were to add a `test-element` inside of another `test-element`, the action within the nested `test-element` would only call the method for that nested component.
+In addition, actions don't pass component boundaries. In other words, if you were to add a `test-element` inside of another `test-element`, the action within the nested `test-element` would only call the method for that nested component.
 
-**Note:** actions only work within light DOM and do not traverse shadow trees of child components.
+**Note:** actions are only detected within light DOM and do not traverse shadow trees of child components.
 
 ----
 
