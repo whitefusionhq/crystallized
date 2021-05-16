@@ -5,7 +5,7 @@
 [![bundlephobia][bundlephobia]][bundlephobia-url]
 
 
-**[Lit](https://lit-element.polymer-project.org)**: Simple. Fast. Web Components.
+**[Lit](https://lit.dev)**: Simple. Fast. Web Components.
 
 **Crystalline**: a collection of Lit enhancements inspired by [Stimulus](https://stimulusjs.org) and written in [Ruby2JS](https://www.ruby2js.com). Crystalline includes:
 
