@@ -14,19 +14,19 @@
   },
   "scripts": {
     "start": "yarn run build -- -w",
-    "clean": "del-cli dist",
-    "prebuild": "yarn run clean",
     "build": "bundle exec ./build_source.rb",
-    "release": "yarn run prebuild && yarn run build && standard-version"
+    "test": "yarn run build && web-test-runner --node-resolve",
+    "release": "yarn run build && standard-version"
   },
   "files": [
     "dist"
   ],
   "devDependencies": {
-    "del-cli": "^3.0.1",
+    "@open-wc/testing": "^2.5.33",
+    "@web/test-runner": "^0.13.4",
     "standard-version": "^8.0.0"
   },
   "dependencies": {
-    "lit-element": "^2.4.0"
+    "lit": "^2.0.0-rc.2"
   }
 }

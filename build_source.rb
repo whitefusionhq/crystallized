@@ -4,7 +4,7 @@ require "fileutils"
 require_relative "./rb2js.config"
 
 source = "src"
-dir = "_ruby2js_build"
+dir = "dist"
 
 if Dir.exist?(dir)
   FileUtils.rm_r dir
@@ -16,14 +16,12 @@ files = Dir["#{source}/**/*.js.rb"]
 
 Dir.chdir(dir) do
   files.each do |ruby_file|
-    FileUtils.mkdir_p(File.dirname(ruby_file))
+    dest_path = File.expand_path ruby_file.delete_prefix(source + "/"), "../dist"
 
-    ruby_code = File.read(File.expand_path(ruby_file, "../"))
-    js_code = Ruby2JS::Loader.process(ruby_code)
+    ruby_code = File.read File.expand_path(ruby_file, "../")
+    js_code = Ruby2JS::Loader.process ruby_code
 
-    File.write(ruby_file.chomp(".rb"), js_code)
+    FileUtils.mkdir_p File.dirname(dest_path)
+    File.write dest_path.chomp(".rb"), js_code
   end
 end
-
-FileUtils.cp_r(File.join(dir, "src/"), "dist")
-FileUtils.rm_r dir
