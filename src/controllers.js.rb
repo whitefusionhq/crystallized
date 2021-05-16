@@ -23,7 +23,6 @@ class DeclarativeActionsController
   # Set up MutationObserver and get ready to look for action definitions
   def host_connected()
     @registered_actions = []
-    @nested_nodes = []
 
     handle_node_changes([{
       type: :attributes,
@@ -38,7 +37,6 @@ class DeclarativeActionsController
   def host_disconnected()
     @node_observer.disconnect()
     @registered_actions = []
-    @nested_nodes = []
   end
 
   # Callback for MutationObserver
@@ -47,16 +45,12 @@ class DeclarativeActionsController
     action_attr = "#{host_name}-action"
 
     # Lambda to set up event listeners
-    setup_listener = ->(node, include_host_node) do
-      if !include_host_node and node.node_name == @host.node_name # don't touch nested elements
-        @nested_nodes.push node
-        next
-      end
-
-      # make sure node isn't inside a nested node
-      next if @nested_nodes.find do |nested_node|
-        nested_node.contains? node
-      end
+    setup_listener = ->(node, only_host_node) do
+      next if !only_host_node && Array.from(
+        @host.query_selector_all(host_name)
+      ).select do |el|
+        el.contains? node
+      end.length > 0 # make sure node isn't inside a nested tag
 
       if node.has_attribute(action_attr)
         node.get_attribute(action_attr).split(" ").each do |action_pair|
@@ -92,13 +86,6 @@ class DeclarativeActionsController
           setup_listener(node, false)
           node.query_selector_all("[#{action_attr}]").each do |inside_node|
             setup_listener(inside_node, false)
-          end
-        end
-        change.removed_nodes.each do |node|
-          # clear out removed nested nodes
-          next unless node.node_name == @host.node_name
-          @nested_nodes = @nested_nodes.select do |nested_node|
-            nested_node != node
           end
         end
       elsif change.type == :attributes

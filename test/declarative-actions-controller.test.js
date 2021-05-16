@@ -52,4 +52,21 @@ describe("DeclarativeActionsController", () => {
 
     assert.equal(el.shadowRoot.querySelector("test-msg").textContent, "clicked!")
   })
+
+  it("handles nesting properly", async () => {
+    const el = await fixture(testhtml`
+      <test-element>
+        <article>
+          <button test-element-action="clickMe">Button</button>
+        </article>
+
+        <test-element id="nested">
+          <button test-element-action="clickMe">Button 2</button>
+        </test-element>
+      </test-element>
+    `)
+
+    el.querySelector("#nested button").click()
+    assert.notEqual(el.shadowRoot.querySelector("test-msg").textContent, "clicked!")
+  })
 })
