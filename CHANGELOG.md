@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/whitefusionhq/crystalline-element/compare/v2.0.1...v2.0.2) (2021-05-16)
+
+
+### Bug Fixes
+
+* Ensure targets don't select from child components ([8a2b4f9](https://github.com/whitefusionhq/crystalline-element/commit/8a2b4f99989ebdfa7583ae94ccbcf61daab23425))
+
 ### [2.0.1](https://github.com/whitefusionhq/crystalline-element/compare/v2.0.0...v2.0.1) (2021-05-16)
 
 
