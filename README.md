@@ -1,13 +1,17 @@
 # ❄️ Crystalline
 
+[![lit][lit]][lit-url]
 [![npm][npm]][npm-url]
-[![node][node]][node-url]
+[![ruby2js][ruby2js]][ruby2js-url]
+<br/>
 [![bundlephobia][bundlephobia]][bundlephobia-url]
+[![bundlephobia dependency count][bundlephobia-deps]][bundlephobia-url]
+[![bundlephobia tree shaking][bundlephobia-shake]][bundlephobia-url]
 
 
-**[Lit](https://lit.dev)**: Simple. Fast. Web Components.
+**[Lit][lit-url]**: Simple. Fast. Web Components.
 
-**Crystalline**: a collection of Lit enhancements inspired by [Stimulus](https://stimulusjs.org) and written in [Ruby2JS](https://www.ruby2js.com). Crystalline includes:
+**Crystalline**: a collection of **Lit enhancements** inspired by [Stimulus](https://stimulusjs.org) and written in [Ruby2JS][ruby2js-url]. Crystalline includes:
 
 * `DeclarativeActionsController` - lets you add action attributes to elements in the light DOM as a way of providing declarative event handlers.
 
@@ -15,13 +19,13 @@
 
 * `CrystallineElement` - a base subclass of LitElement which provides syntax benefits for Ruby2JS users as well as includes the two controllers above.
 
-Crystalline uses Ruby 3 and Ruby2JS to compile to modern ES6+ JavaScript. Crystalline can be used with any modern JS bundler as well as directly in buildless HTML using `script type="module"`.
+Crystalline uses Ruby 3 and Ruby2JS to compile its source code to modern ES6+ JavaScript. Crystalline can be used with _any modern JS bundler_ as well as directly in buildless HTML using `script type="module"`.
 
 Crystalline works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com)—providing features not normally found in web component libraries that assume they're only concerned with client-rendered markup and event handling.
 
 **Enjoy writing functional components?** While I am of the opinion classes work quite well most of the time, for very simple components or components constructed out of many separate `lit-html` snippets, you might long for a functional shorthand. In those cases, `crystallize` will do just the trick!
 
-You can build an entire suite of reactive frontend components just with CrystallineElement, along with a general strategy to enhance your site with a variety of emerging [web components](https://github.com/topics/web-components) and component libraries ([Shoelace](https://shoelace.style) for example).
+You can build an entire suite of reactive frontend components just with Lit/Crystalline, along with a general strategy to enhance your site with a variety of emerging [web components](https://github.com/topics/web-components) and component libraries ([Shoelace](https://shoelace.style) for example).
 
 ----
 
@@ -204,9 +208,13 @@ Run `yarn test` to run the test suite.
 
 MIT
 
+[lit]: https://img.shields.io/badge/-Lit-324FFF?style=for-the-badge&logo=lit&logoColor=white"
+[lit-url]: https://lit.dev
 [npm]: https://img.shields.io/npm/v/crystalline-element.svg?style=for-the-badge
 [npm-url]: https://npmjs.com/package/crystalline-element
-[node]: https://img.shields.io/node/v/crystalline-element.svg?style=for-the-badge
-[node-url]: https://nodejs.org
+[ruby2js]: https://img.shields.io/badge/Ruby2JS-darkred?style=for-the-badge&logo=ruby
+[ruby2js-url]: https://www.ruby2js.com
 [bundlephobia]: https://badgen.net/bundlephobia/minzip/crystalline-element
+[bundlephobia-deps]: https://badgen.net/bundlephobia/dependency-count/crystalline-element
+[bundlephobia-shake]: https://badgen.net/bundlephobia/tree-shaking/crystalline-element
 [bundlephobia-url]: https://bundlephobia.com/result?p=crystalline-element
