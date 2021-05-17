@@ -19,7 +19,7 @@
 
 * `CrystallineElement` - a base subclass of LitElement which provides syntax benefits for Ruby2JS users as well as includes the two controllers above.
 
-Crystalline uses Ruby 3 and Ruby2JS to compile its source code to modern ES6+ JavaScript. Crystalline can be used with _any modern JS bundler_ as well as directly in buildless HTML using `script type="module"`.
+Crystalline uses Ruby 3 and Ruby2JS to compile its source code to modern ES6+ JavaScript ([example](https://unpkg.com/crystalline-element?module)). Crystalline can be used with _any modern JS bundler_ as well as directly in buildless HTML using `script type="module"`.
 
 Crystalline works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com)—providing features not normally found in web component libraries that assume they're only concerned with client-rendered markup and event handling.
 
@@ -184,7 +184,7 @@ crystallize("functional-component", {
 
 ----
 
-## Ruby2JS
+## Building Source with Ruby2JS
 
 Requires Ruby 3.0. A Ruby version manager like `rbenv` is recommended. Run `bundle install` to set up the Ruby gems.
 
