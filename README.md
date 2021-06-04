@@ -13,11 +13,11 @@
 
 **Crystalline**: a collection of **Lit enhancements** inspired by [Stimulus](https://stimulusjs.org) and written in [Ruby2JS][ruby2js-url]. Crystalline includes:
 
-* `DeclarativeActionsController` - lets you add action attributes to elements in the light DOM as a way of providing declarative event handlers.
+* [`DeclarativeActionsController`](https://github.com/whitefusionhq/crystalline-element#using-declarativeactionscontroller) - lets you add action attributes to elements in the light DOM as a way of providing declarative event handlers.
 
 * `TargetsController` - lets you easily query child nodes in the light DOM using either selectors or explicit attribute-based identifies. _Docs coming soon!_
 
-* `CrystallineElement` - a base subclass of LitElement which provides syntax benefits for Ruby2JS users as well as includes the two controllers above.
+* [`CrystallineElement`](https://github.com/whitefusionhq/crystalline-element#using-crystallineelement) - a base subclass of LitElement which provides syntax benefits for Ruby2JS users as well as includes the two controllers above.
 
 Crystalline uses Ruby 3 and Ruby2JS to compile its source code to modern ES6+ JavaScript ([example](https://unpkg.com/crystalline-element?module)). Crystalline can be used with _any modern JS bundler_ as well as directly in buildless HTML using `script type="module"`.
 
@@ -85,8 +85,6 @@ Because `DeclarativeActionsController` uses a [MutationObserver](https://develop
 In addition, actions don't pass component boundaries. In other words, if you were to add a `test-element` inside of another `test-element`, the action within the nested `test-element` would only call the method for that nested component.
 
 **Note:** actions are only detected within light DOM and do not traverse shadow trees of child components.
-
-----
 
 ## Using CrystallineElement
 
