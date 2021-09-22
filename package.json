@@ -1,6 +1,6 @@
 {
   "name": "crystalline-element",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "A collection of Lit enhancements inspired by Stimulus and written in Ruby2JS.",
   "main": "dist/index.js",
   "module": "dist/index.js",

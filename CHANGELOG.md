@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/whitefusionhq/crystalline-element/compare/v2.1.0...v3.0.0) (2021-09-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* Lit 2 final release
+
+* Lit 2 release, use Puppetter for tests ([f0f3296](https://github.com/whitefusionhq/crystalline-element/commit/f0f329661976303ffa11c8bae585d2683cb3c46c))
+
 ## [2.1.0](https://github.com/whitefusionhq/crystalline-element/compare/v2.0.3...v2.1.0) (2021-05-16)
 
 
