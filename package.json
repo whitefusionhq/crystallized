@@ -15,7 +15,7 @@
   "scripts": {
     "start": "yarn run build -- -w",
     "build": "bundle exec ./build_source.rb",
-    "test": "yarn run build && web-test-runner --node-resolve",
+    "test": "yarn run build && web-test-runner --node-resolve --puppeteer",
     "release": "yarn run build && standard-version"
   },
   "exports": {
@@ -28,9 +28,10 @@
   "devDependencies": {
     "@open-wc/testing": "^2.5.33",
     "@web/test-runner": "^0.13.4",
+    "@web/test-runner-puppeteer": "^0.10.2",
     "standard-version": "^8.0.0"
   },
   "dependencies": {
-    "lit": "^2.0.0-rc.2"
+    "lit": "^2.0.0"
   }
 }
