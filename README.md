@@ -1,4 +1,4 @@
-# ❄️ Crystalline
+# ❄️ Crystallized
 
 [![lit][lit]][lit-url]
 [![npm][npm]][npm-url]
@@ -11,21 +11,19 @@
 
 **[Lit][lit-url]**: Simple. Fast. Web Components.
 
-**Crystalline**: a collection of **Lit enhancements** inspired by [Stimulus](https://stimulusjs.org) and written in [Ruby2JS][ruby2js-url]. Crystalline includes:
+**Crystallized**: a collection of **Lit 2 enhancements**, starting with controllers inspired by [Stimulus](https://stimulusjs.org). Crystallized includes:
 
 * [`DeclarativeActionsController`](https://github.com/whitefusionhq/crystalline-element#using-declarativeactionscontroller) - lets you add action attributes to elements in the light DOM as a way of providing declarative event handlers.
 
 * `TargetsController` - lets you easily query child nodes in the light DOM using either selectors or explicit attribute-based identifies. _Docs coming soon!_
 
-* [`CrystallineElement`](https://github.com/whitefusionhq/crystalline-element#using-crystallineelement) - a base subclass of LitElement which provides syntax benefits for Ruby2JS users as well as includes the two controllers above.
+Crystallized uses Ruby 3 and [Ruby2JS][ruby2js-url] to compile its source code to modern ES6+ JavaScript ([example](https://unpkg.com/crystalline-element?module)). Crystallized can be used with _any modern JS bundler_ as well as directly in buildless HTML using `script type="module"`.
 
-Crystalline uses Ruby 3 and Ruby2JS to compile its source code to modern ES6+ JavaScript ([example](https://unpkg.com/crystalline-element?module)). Crystalline can be used with _any modern JS bundler_ as well as directly in buildless HTML using `script type="module"`.
+Lit along with Crystallized works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com)—providing features not normally found in web component libraries that assume they're only concerned with client-rendered markup and event handling.
 
-Crystalline works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com)—providing features not normally found in web component libraries that assume they're only concerned with client-rendered markup and event handling.
+You can build an entire suite of reactive frontend components just with Lit/Crystallized, along with a general strategy to enhance your site with a variety of emerging [web components](https://github.com/topics/web-components) and component libraries ([Shoelace](https://shoelace.style) for example).
 
-**Enjoy writing functional components?** While I am of the opinion classes work quite well most of the time, for very simple components or components constructed out of many separate `lit-html` snippets, you might long for a functional shorthand. In those cases, `crystallize` will do just the trick!
-
-You can build an entire suite of reactive frontend components just with Lit/Crystalline, along with a general strategy to enhance your site with a variety of emerging [web components](https://github.com/topics/web-components) and component libraries ([Shoelace](https://shoelace.style) for example).
+**NOTE:** this package is currently in the process of transitioning to `@crystallized/controllers`. All of the below information is deprecated. Please come back shortly for updated instructions!
 
 ----
 
@@ -196,7 +194,7 @@ Run `yarn test` to run the test suite.
 
 ## Contributing
 
-1. Fork it (https://github.com/whitefusionhq/crystalline-element/fork)
+1. Fork it (https://github.com/whitefusionhq/crystallized/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
