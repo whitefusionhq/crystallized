@@ -1,5 +1,5 @@
 {
-  "name": "crystalline-element",
+  "name": "@crystallized/controllers",
   "version": "3.0.0",
   "description": "A collection of Lit enhancements inspired by Stimulus and written in Ruby2JS.",
   "main": "dist/index.js",
@@ -19,8 +19,7 @@
     "release": "yarn run build && standard-version"
   },
   "exports": {
-    ".": "./dist/index.js",
-    "./controllers": "./dist/controllers.js"
+    ".": "./dist/index.js"
   },
   "files": [
     "dist"

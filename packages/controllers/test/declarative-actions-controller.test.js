@@ -1,7 +1,7 @@
 import { fixture, assert, aTimeout, html as testhtml } from "@open-wc/testing"
 import { LitElement, html } from "lit"
 
-import { DeclarativeActionsController } from "../dist/controllers"
+import { DeclarativeActionsController } from "../dist"
 
 // Fixtures
 

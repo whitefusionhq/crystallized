@@ -1,17 +1,3 @@
-# Lambda for determining default node action
-default_action_for_node = ->(node) do
-  case node.node_name.downcase()
-  when :form
-    :submit
-  when :input, :textarea
-    return node.get_attribute(:type) == :submit ? :click : :input
-  when :select
-    :change
-  else
-    :click
-  end
-end
-
 # Controller to loop through light DOM on connection + mutations and find
 # declared actions
 class DeclarativeActionsController
@@ -37,6 +23,19 @@ class DeclarativeActionsController
   def host_disconnected()
     @node_observer.disconnect()
     @registered_actions = []
+  end
+
+  def default_action_for_node(node)
+    case node.node_name.downcase()
+    when :form
+      :submit
+    when :input, :textarea
+      return node.get_attribute(:type) == :submit ? :click : :input
+    when :select
+      :change
+    else
+      :click
+    end
   end
 
   # Callback for MutationObserver
