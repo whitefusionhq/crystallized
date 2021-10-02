@@ -12,7 +12,7 @@
 
 * [`DeclarativeActionsController`](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers#using-declarativeactionscontroller) - lets you add action attributes to elements in the light DOM as a way of providing declarative event handlers.
 
-* [`TargetsController`](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers#using-targetscontroller) - lets you easily query child nodes in the light DOM using either selectors or explicit attribute-based identifiers. _Docs coming soon!_
+* [`TargetsController`](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers#using-targetscontroller) - lets you easily query child nodes in the light DOM using either selectors or explicit attribute-based identifiers.
 
 ----
 
@@ -73,7 +73,7 @@ In addition, _actions don't pass component boundaries_. In other words, if you w
 
 ## Using TargetsController
 
-A target is a specific element, or elements, in your light DOM you would like to accesss from your component. Like actions, you can specify targets using special HTML attributes. However, you can also target any element directly regardless of markup by using a selector.
+A target is a specific element, or elements, in your light DOM you would like to access from your component. Like actions, you can specify targets using special HTML attributes. However, you can also target any element directly regardless of markup by using a selector.
 
 To use attributed targets, use the tag name of the component (aka `test-element`) plus `target`, and include an identifier as the attribute value. Then in your targets configuration, you can use the same identifier as the key along with `@` as the value. So for `test-element-target="message"`, you'll add `message: "@"` to the targets config, which then allows you to access the target via `this.message` in your component.
 
@@ -89,7 +89,7 @@ Here's an example of several target types in action:
 
 ```js
 import { LitElement, html } from "lit"
-import { DeclarativeActionsController } from "@crystallized/controllers"
+import { TargetsController } from "@crystallized/controllers"
 
 class TestElement extends LitElement {
   targets = new TargetsController(this)
@@ -156,11 +156,11 @@ MIT
 
 [lit]: https://img.shields.io/badge/-Lit-324FFF?style=for-the-badge&logo=lit&logoColor=white"
 [lit-url]: https://lit.dev
-[npm]: https://img.shields.io/npm/v/crystalline-element.svg?style=for-the-badge
-[npm-url]: https://npmjs.com/package/crystalline-element
+[npm]: https://img.shields.io/npm/v/@crystallized/controllers.svg?style=for-the-badge
+[npm-url]: https://npmjs.com/package/@crystallized/controllers
 [ruby2js]: https://img.shields.io/badge/Ruby2JS-darkred?style=for-the-badge&logo=ruby
 [ruby2js-url]: https://www.ruby2js.com
-[bundlephobia]: https://badgen.net/bundlephobia/minzip/crystalline-element
-[bundlephobia-deps]: https://badgen.net/bundlephobia/dependency-count/crystalline-element
-[bundlephobia-shake]: https://badgen.net/bundlephobia/tree-shaking/crystalline-element
-[bundlephobia-url]: https://bundlephobia.com/result?p=crystalline-element
+[bundlephobia]: https://badgen.net/bundlephobia/minzip/@crystallized/controllers
+[bundlephobia-deps]: https://badgen.net/bundlephobia/dependency-count/@crystallized/controllers
+[bundlephobia-shake]: https://badgen.net/bundlephobia/tree-shaking/@crystallized/controllers
+[bundlephobia-url]: https://bundlephobia.com/result?p=@crystallized/controllers
