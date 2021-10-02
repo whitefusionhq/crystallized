@@ -1,17 +1,3 @@
-# Lambda for determining default node action
-default_action_for_node = ->(node) do
-  case node.node_name.downcase()
-  when :form
-    :submit
-  when :input, :textarea
-    return node.get_attribute(:type) == :submit ? :click : :input
-  when :select
-    :change
-  else
-    :click
-  end
-end
-
 # Controller to loop through light DOM on connection + mutations and find
 # declared actions
 class DeclarativeActionsController
@@ -37,6 +23,19 @@ class DeclarativeActionsController
   def host_disconnected()
     @node_observer.disconnect()
     @registered_actions = []
+  end
+
+  def default_action_for_node(node)
+    case node.node_name.downcase()
+    when :form
+      :submit
+    when :input, :textarea
+      return node.get_attribute(:type) == :submit ? :click : :input
+    when :select
+      :change
+    else
+      :click
+    end
   end
 
   # Callback for MutationObserver
@@ -114,7 +113,7 @@ class TargetsController
     @host.class.targets.each_pair do |name, selector|
       if selector.is_a?(Array)
         selector = targetized_selector(name, selector[0])
-        Object.define_property(@host, "_#{name}", {
+        Object.define_property(@host, name, {
           get: ->() do
             Array(@host.query_selector_all(selector)).select do |node|
               node.closest(@node_name) == @host
@@ -123,7 +122,7 @@ class TargetsController
         })
       else
         selector = targetized_selector(name, selector)
-        Object.define_property(@host, "_#{name}", {
+        Object.define_property(@host, name, {
           get: ->() do
             node = @host.query_selector(selector)
             node && node.closest(@node_name) == @host ? node : null
