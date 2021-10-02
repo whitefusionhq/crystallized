@@ -12,7 +12,7 @@
 
 * `TargetsController` - lets you easily query child nodes in the light DOM using either selectors or explicit attribute-based identifies.
 
-Crystallized uses Ruby 3 and [Ruby2JS][ruby2js-url] to compile its source code to modern ES6+ JavaScript. Crystallized can be used with _any modern JS bundler_ as well as directly in buildless HTML using `script type="module"`.
+Crystallized is written in [Ruby2JS][ruby2js-url], which is then compiled to modern ES6+ JavaScript. (You don't need Ruby/Ruby2JS installed to use Crystallized.) Crystallized can be used with _any modern JS bundler_ as well as directly in buildless HTML using `script type="module"`.
 
 Lit along with Crystallized works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com)—providing features not normally found in web component libraries that assume they're only concerned with client-rendered markup and event handling.
 
@@ -20,7 +20,7 @@ You can build an entire suite of reactive frontend components just with Lit/Crys
 
 ## Installation & Usage
 
-**[Documentation on using Crystallized's Lit 2 controllers here.](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers)**
+**[Here's the documentation on how to use Crystallized's Lit 2 controllers.](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers)**
 
 ## Contributing
 
