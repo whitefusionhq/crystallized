@@ -128,7 +128,7 @@ class TargetsController {
         if (Array.isArray(selector)) {
           selector = this.targetizedSelector(name, selector[0]);
 
-          Object.defineProperty(this._host, `_${name}`, {get: () => (
+          Object.defineProperty(this._host, name, {get: () => (
             Array.from(this._host.querySelectorAll(selector)).filter(node => (
               node.closest(this._nodeName) == this._host
             ))
@@ -136,7 +136,7 @@ class TargetsController {
         } else {
           selector = this.targetizedSelector(name, selector);
 
-          Object.defineProperty(this._host, `_${name}`, {get: () => {
+          Object.defineProperty(this._host, name, {get: () => {
             let node = this._host.querySelector(selector);
             return node && node.closest(this._nodeName) == this._host ? node : null
           }})

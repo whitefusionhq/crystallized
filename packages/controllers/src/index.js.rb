@@ -113,7 +113,7 @@ class TargetsController
     @host.class.targets.each_pair do |name, selector|
       if selector.is_a?(Array)
         selector = targetized_selector(name, selector[0])
-        Object.define_property(@host, "_#{name}", {
+        Object.define_property(@host, name, {
           get: ->() do
             Array(@host.query_selector_all(selector)).select do |node|
               node.closest(@node_name) == @host
@@ -122,7 +122,7 @@ class TargetsController
         })
       else
         selector = targetized_selector(name, selector)
-        Object.define_property(@host, "_#{name}", {
+        Object.define_property(@host, name, {
           get: ->() do
             node = @host.query_selector(selector)
             node && node.closest(@node_name) == @host ? node : null

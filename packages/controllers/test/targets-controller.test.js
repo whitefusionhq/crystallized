@@ -10,14 +10,14 @@ class TestElement extends LitElement {
 
   static get targets() {
     return {
-      "message": "@",
-      "dupMessage": "@message",
-      "extra": ["extra-message"]
+      message: "@",
+      dupMessage: "@message",
+      extra: ["extra-message"]
     }
   }
 
   clickMe() {
-    this.shadowRoot.querySelector("test-msg").textContent = this._message.textContent + this._dupMessage.textContent + this._extra[0].textContent
+    this.shadowRoot.querySelector("test-msg").textContent = this.message.textContent + this.dupMessage.textContent + this.extra[0].textContent
   }
 
   render() {
@@ -35,8 +35,8 @@ class NestedTargetsComponent extends LitElement {
 
   static get targets() {
     return {
-      "button": "button",
-      "buttons": ["button"]
+      button: "button",
+      buttons: ["button"]
     }
   }
 }
@@ -67,12 +67,12 @@ describe("TargetsController", () => {
       </targets-component>
     `)
 
-    assert.equal(el._button, el.querySelector("#outer"))
-    assert.equal(el._buttons.length, 1)
-    assert.equal(el._buttons[0], el.querySelector("#outer"))
+    assert.equal(el.button, el.querySelector("#outer"))
+    assert.equal(el.buttons.length, 1)
+    assert.equal(el.buttons[0], el.querySelector("#outer"))
 
     const nestedEl = el.querySelector("targets-component")
-    assert.equal(nestedEl._buttons.length, 1)
-    assert.equal(nestedEl._buttons[0], el.querySelector("#inner"))
+    assert.equal(nestedEl.buttons.length, 1)
+    assert.equal(nestedEl.buttons[0], el.querySelector("#inner"))
   })
 })
