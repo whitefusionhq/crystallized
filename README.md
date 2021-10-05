@@ -6,7 +6,7 @@
 
 **[Lit][lit-url]**: Simple. Fast. Web Components.
 
-**Crystallized**: a collection of **Lit 2 enhancements**, starting with [controllers]((https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers)) inspired by [Stimulus](https://stimulusjs.org). Crystallized includes:
+**Crystallized**: a collection of **Lit 2 enhancements**, starting with [controllers]((https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers)) inspired by [Stimulus](https://stimulus.hotwired.dev). Crystallized includes:
 
 * `DeclarativeActionsController` - lets you add action attributes to elements in the light DOM as a way of providing declarative event handlers.
 
