@@ -128,6 +128,38 @@ In this example, if you click the component's button labeled "Click Me", it will
 
 Like with actions, targets don't cross component boundaries. So if you nest Tag B inside of Tag A and they're the same component tag, any targets you try to access in Tag A's code will not be contained within Tag B.
 
+### Using with TypeScript
+
+While this project wasn't specifically built with TypeScript in mind, it's very easy to set up your TS project to support targets. (There's nothing necessary to set up for actions since they're entirely declarative and HTML-driven.)
+
+First, in a `types.d.ts` file or something to that effect, add:
+
+```
+declare module '@crystallized/controllers';
+```
+
+Next, you'll want to add additional types to your Lit element class underneath the `targets` configuration. For example:
+
+```js
+  static targets = {
+    message: "@"
+  }
+
+  message?: HTMLElement;
+```
+
+If you want to get more specific about the target element type, just specify the appropriate DOM class name. For example:
+
+```js
+  static targets = {
+    namefield: "@",
+    textareas: ["textarea"]
+  }
+
+  namefield?: HTMLInputElement; // single element
+  textareas?: HTMLTextAreaElement[]; // array of elements
+```
+
 ----
 
 ## Building Source with Ruby2JS
