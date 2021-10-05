@@ -23,7 +23,7 @@ class DeclarativeActionsController
   def host_disconnected()
     # For some reason there are cases where this method is called before node_observer has been initialized.
     # So we can't assume the value is already present...
-    @node_observer&.disconnect()
+    @node_observer.disconnect() if @node_observer
     @registered_actions = []
   end
 
