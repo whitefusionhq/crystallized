@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.3](https://github.com/whitefusionhq/crystallized/compare/v4.0.2...v4.0.3) (2021-10-05)
+
+
+### Bug Fixes
+
+* use conditional for wider compatibility ([a17e2fe](https://github.com/whitefusionhq/crystallized/commit/a17e2fe6972c53dfd4722f481d7bfbb139c54531))
+
 ### [4.0.2](https://github.com/whitefusionhq/crystallized/compare/v4.0.0...v4.0.2) (2021-10-05)
 
 
