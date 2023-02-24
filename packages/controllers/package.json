@@ -1,6 +1,6 @@
 {
   "name": "@crystallized/controllers",
-  "version": "4.0.3",
+  "version": "5.0.0",
   "description": "A collection of Lit enhancements inspired by Stimulus and written in Ruby2JS.",
   "main": "dist/index.js",
   "module": "dist/index.js",

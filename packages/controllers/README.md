@@ -1,10 +1,6 @@
 # ❄️ Crystallized: Controllers for Web Components
 
 [![npm][npm]][npm-url]
-<br/>
-[![bundlephobia][bundlephobia]][bundlephobia-url]
-[![bundlephobia dependency count][bundlephobia-deps]][bundlephobia-url]
-[![bundlephobia tree shaking][bundlephobia-shake]][bundlephobia-url]
 
 This package, as part of the [Crystallized](https://github.com/whitefusionhq/crystallized) project, provides:
 
@@ -12,7 +8,7 @@ This package, as part of the [Crystallized](https://github.com/whitefusionhq/cry
 
 * [`TargetsController`](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers#using-targetscontroller) - lets you easily query child nodes in the DOM using either selectors or explicit attribute-based identifiers.
 
-You can use **[Lit][lit-url]** (a library for building fast, reactive web components) along with these controllers, or you can build your own "vanilla" web components and enhance them with the full suite of Crystallized utilities.
+You can use **[Lit][lit-url]** (a library for building fast, reactive web components) along with these controllers, or you can build your own "vanilla" web components and enhance them with the full suite of Crystallized utilities. The entire library is under 7KB (before compression!) and has no dependencies.
 
 ----
 
@@ -285,7 +281,3 @@ MIT
 
 [npm]: https://img.shields.io/npm/v/@crystallized/controllers.svg?style=for-the-badge
 [npm-url]: https://npmjs.com/package/@crystallized/controllers
-[bundlephobia]: https://badgen.net/bundlephobia/minzip/@crystallized/controllers
-[bundlephobia-deps]: https://badgen.net/bundlephobia/dependency-count/@crystallized/controllers
-[bundlephobia-shake]: https://badgen.net/bundlephobia/tree-shaking/@crystallized/controllers
-[bundlephobia-url]: https://bundlephobia.com/result?p=@crystallized/controllers
