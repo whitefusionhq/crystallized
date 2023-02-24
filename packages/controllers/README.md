@@ -1,36 +1,52 @@
-# ❄️ Crystallized Controllers (for Lit 2)
+# ❄️ Crystallized: Controllers for Web Components
 
-[![lit][lit]][lit-url]
 [![npm][npm]][npm-url]
-[![ruby2js][ruby2js]][ruby2js-url]
 <br/>
 [![bundlephobia][bundlephobia]][bundlephobia-url]
 [![bundlephobia dependency count][bundlephobia-deps]][bundlephobia-url]
 [![bundlephobia tree shaking][bundlephobia-shake]][bundlephobia-url]
 
-**[Lit][lit-url]** gives you a simple toolkit for building fast, reactive web components. You can enhance your Lit components with controllers. This package, as part of the [Crystallized](https://github.com/whitefusionhq/crystallized) project, provides:
+This package, as part of the [Crystallized](https://github.com/whitefusionhq/crystallized) project, provides:
 
-* [`DeclarativeActionsController`](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers#using-declarativeactionscontroller) - lets you add action attributes to elements in the light DOM as a way of providing declarative event handlers.
+* [`DeclarativeActionsController`](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers#using-declarativeactionscontroller) - lets you add action attributes to elements as a way of providing declarative event handlers.
 
-* [`TargetsController`](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers#using-targetscontroller) - lets you easily query child nodes in the light DOM using either selectors or explicit attribute-based identifiers.
+* [`TargetsController`](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers#using-targetscontroller) - lets you easily query child nodes in the DOM using either selectors or explicit attribute-based identifiers.
+
+You can use **[Lit][lit-url]** (a library for building fast, reactive web components) along with these controllers, or you can build your own "vanilla" web components and enhance them with the full suite of Crystallized utilities.
 
 ----
 
 ## Installing
 
-```sh
-yarn add @crystallized/controllers
-```
-
-or
-
 ```
 npm i @crystallized/controllers
 ```
 
+or
+
+```sh
+yarn add @crystallized/controllers
+```
+
+## Adding Controller support to HTMLElement
+
+(Skip this section if you're using Lit)
+
+Crystallized functionality is added to custom elements via controllers, [a concept pioneered by Lit](https://lit.dev/docs/api/controllers/). To support using controllers with vanilla HTML elements, simply use the `Controllable` mixin:
+
+```js
+import { Controllable } from "@crystallized/controllers"
+
+class MyElement extends Controllable(HTMLElement) {
+
+}
+```
+
 ## Using DeclarativeActionsController
 
-It's very simple to add this controller to any Lit 2 component. First let's set up a new test component:
+### Lit
+
+It's very simple to add this controller to any Lit v2+ component. Let's set up a new test component:
 
 ```js
 import { LitElement, html } from "lit"
@@ -65,17 +81,56 @@ You'll notice that currently nothing actually calls the `clickMe` method. Don't 
 
 The tag name of the component (aka `test-element`) plus `action` sets up the event handler via an action attribute, with the method name `clickMe` being the value of the attribute. This is shorthand for `click->clickMe`. The controller defaults to `click` if no event type is specified (with a few exceptions, such as `submit` for forms and `input`  or `change` for various form controls).
 
-Because `DeclarativeActionsController` uses a [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to keep an eye on HTML in the light DOM, at any time you can update the markup dynamically and actions will work as expected.
+Because `DeclarativeActionsController` uses a [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to keep an eye on HTML in the DOM, at any time you can update the markup dynamically and actions will work as expected.
 
 In addition, _actions don't pass component boundaries_. In other words, if you were to add a `test-element` inside of another `test-element`, the action within the nested `test-element` would only call the method for that nested component.
 
-**Note:** actions are only detected within light DOM and do not traverse shadow trees of child components.
+### Vanilla JS
+
+Using the controller with a vanilla web component is just as straightforward as with Lit:
+
+```js
+import { Controllable } from "@crystallized/controllers"
+
+const template = Object.assign(document.createElement("template"), {
+  innerHTML: `
+    <slot></slot>
+    <test-msg></test-msg>
+  `
+})
+
+class TestElement extends Controllable(HTMLElement) {
+  actions = new DeclarativeActionsController(this)
+
+  constructor() {
+    super()
+
+    if (!this.shadowRoot) {
+      this.attachShadow({ mode: "open" }).appendChild(template.content.cloneNode(true))
+    }
+  }
+
+  clickMe() {
+    this.shadowRoot.querySelector("test-msg").textContent = "clicked!"
+  }
+}
+customElements.define("test-element", TestElement)
+```
+
+### Discovering Actions within the Shadow DOM
+
+By default, actions are only detected within "light DOM" and do not pierce the shadow DOM. To enable using actions within your component's shadow root (useful when you're not using a Lit template), create another controller and use the `shadow: true` option.
+
+```js
+actions = new DeclarativeActionsController(this)
+shadowActions = new DeclarativeActionsController(this, { shadow: true })
+```
 
 ## Using TargetsController
 
-A target is a specific element, or elements, in your light DOM you would like to access from your component. Like actions, you can specify targets using special HTML attributes. However, you can also target any element directly regardless of markup by using a selector.
+A target is a specific element, or elements, in your DOM you would like to access from your component. Like actions, you can specify targets using special HTML attributes. However, you can also target any element directly regardless of markup by using a selector.
 
-To use attributed targets, use the tag name of the component (aka `test-element`) plus `target`, and include an identifier as the attribute value. Then in your targets configuration, you can use the same identifier as the key along with `@` as the value. So for `test-element-target="message"`, you'll add `message: "@"` to the targets config, which then allows you to access the target via `this.message` in your component.
+First, let's talk about using targets with the "light DOM". Similarly to the DeclarativeActionsController, you should include the tag name of the component (aka `test-element`) plus `target`, and include an identifier as the attribute value. Then in your targets configuration, you can use the same identifier as the key along with `@` as the value. So for `test-element-target="message"`, you'll add `message: "@"` to the targets config, which then allows you to access the target via `this.message` in your component.
 
 You can also use a different key than the identifier. For example, `test-element-target="thumbnail"` and a config of `thumbnailImage: "@thumbnail"` would allow `this.thumbnailImage` to accesss the `thumbnail` target.
 
@@ -92,15 +147,13 @@ import { LitElement, html } from "lit"
 import { TargetsController } from "@crystallized/controllers"
 
 class TestElement extends LitElement {
-  targets = new TargetsController(this)
-
-  static get targets() {
-    return {
-      message: "@",
-      dupMessage: "@message",
-      extra: ["p.extra"]
-    }
+  static targets = {
+    message: "@",
+    dupMessage: "@message",
+    extra: ["p.extra"]
   }
+
+  targets = new TargetsController(this)
 
   clickMe() {
     this.shadowRoot.querySelector("test-msg").textContent = this.message.textContent + this.dupMessage.textContent + this.extra[0].textContent
@@ -127,6 +180,56 @@ customElements.define("test-element", TestElement)
 In this example, if you click the component's button labeled "Click Me", it will access the `message` target, the `dupMessage` target (which actually happens to reference the same element), and the first element in the `extra` array, and concatenate all text content together to insert `clicked!clicked!howdy` into the `test-msg` element.
 
 Like with actions, targets don't cross component boundaries. So if you nest Tag B inside of Tag A and they're the same component tag, any targets you try to access in Tag A's code will not be contained within Tag B.
+
+### Configuring Targets within the Shadow DOM
+
+You can choose _only_ to look for targets in your component's shadow root by passing `{ shadow: true }` as an option. If you want to configure both light DOM targets and shadow DOM targets, you'll need to pass the targets configuration explicitly. Here's an example using a vanilla web component:
+
+```js
+class TestElement extends Controllable(HTMLElement) {
+  targets = new TargetsController(this, {
+    targets: {
+      message: "@"
+    }
+  })
+
+  shadowTargets = new TargetsController(this, {
+    shadow: true,
+    targets: {
+      items: ["li"]
+    }
+  })
+
+  ////
+}
+```
+
+## Private Fields
+
+If you can target modern browsers or use a bundler, you could mark the controller variables private since there's no reason they need to be made available as a public API.
+
+```js
+class TestElement extends LitElement {
+  #targets = new TargetsController(this)
+  #actions = new DeclarativeActionsController(this)
+}
+```
+
+## Crystallized Everywhere, All at Once
+
+We now provide an all-in-one `CrystallizedController` shortcut which is particularly helpful when writing vanilla web components.
+
+```js
+#crystallized = new CrystallizedController(this)
+```
+
+This is equivalent to the following:
+
+```js
+#actions = new DeclarativeActionsController(this)
+#shadowActions = new DeclarativeActionsController(this, { shadow: true })
+#targets = new TargetsController(this, { shadow: true })
+```
 
 ### Using with TypeScript
 
@@ -162,17 +265,11 @@ If you want to get more specific about the target element type, just specify the
 
 ----
 
-## Building Source with Ruby2JS
-
-Requires Ruby 3.0. A Ruby version manager like `rbenv` is recommended. Run `bundle install` to set up the Ruby gems.
-
-Run `yarn build` (which gets run by the `test` and `release` script automatically) to transpile the Ruby `src` files to the JS `dist` folder.
-
 ## Testing
 
 Crystalline uses the [Modern Web Test Runner](https://modern-web.dev/guides/test-runner/getting-started/) and [helpers from Open WC](https://open-wc.org/docs/testing/testing-package/) for its test suite.
 
-Run `yarn test` to run the test suite.
+Run `npm run test` to run the test suite, or `npm run test:dev` to watch tests and re-run on every change.
 
 ## Contributing
 
@@ -186,12 +283,8 @@ Run `yarn test` to run the test suite.
 
 MIT
 
-[lit]: https://img.shields.io/badge/-Lit-324FFF?style=for-the-badge&logo=lit&logoColor=white"
-[lit-url]: https://lit.dev
 [npm]: https://img.shields.io/npm/v/@crystallized/controllers.svg?style=for-the-badge
 [npm-url]: https://npmjs.com/package/@crystallized/controllers
-[ruby2js]: https://img.shields.io/badge/Ruby2JS-darkred?style=for-the-badge&logo=ruby
-[ruby2js-url]: https://www.ruby2js.com
 [bundlephobia]: https://badgen.net/bundlephobia/minzip/@crystallized/controllers
 [bundlephobia-deps]: https://badgen.net/bundlephobia/dependency-count/@crystallized/controllers
 [bundlephobia-shake]: https://badgen.net/bundlephobia/tree-shaking/@crystallized/controllers

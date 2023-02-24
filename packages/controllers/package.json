@@ -10,27 +10,33 @@
   "license": "MIT",
   "private": false,
   "engines": {
-    "node": ">= 10.13.0"
+    "node": ">= 14"
   },
   "scripts": {
-    "start": "yarn run build -- -w",
-    "build": "bundle exec ./build_source.rb",
-    "test": "yarn run build && web-test-runner --node-resolve --puppeteer",
-    "release": "yarn run build && standard-version"
+    "start": "npm run build -- --watch",
+    "build": "node esbuild.config.js",
+    "test": "npm run build && web-test-runner --node-resolve",
+    "test:dev": "npm run test -- --watch"
   },
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/index.js",
+    "./src/*": "./src/*"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "devDependencies": {
-    "@open-wc/testing": "^2.5.33",
-    "@web/test-runner": "^0.13.4",
-    "@web/test-runner-puppeteer": "^0.10.2",
-    "standard-version": "^8.0.0"
+    "@open-wc/testing": "^3.1.7",
+    "@web/test-runner": "^0.15.1",
+    "@web/test-runner-playwright": "^0.9.0",
+    "esbuild": "^0.17.10"
   },
-  "dependencies": {
+  "peerDependencies": {
     "lit": "^2.0.0"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "semi": false
   }
 }

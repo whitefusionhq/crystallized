@@ -1,26 +1,20 @@
 # ❄️ Crystallized
 
-[![lit][lit]][lit-url]
-[![ruby2js][ruby2js]][ruby2js-url]
+**Crystallized** is a collection of quality-of-life DX enhancements to Lit 2 or "vanilla" web components, inspired in part by [Stimulus](https://stimulus.hotwired.dev). Crystallized includes:
 
+* `DeclarativeActionsController` - lets you add action attributes to elements as a way of providing declarative event handlers.
 
-**[Lit][lit-url]**: Simple. Fast. Web Components.
+* `TargetsController` - lets you easily query child nodes in DOM using either selectors or explicit attribute-based identifies.
 
-**Crystallized**: a collection of **Lit 2 enhancements**, starting with [controllers]((https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers)) inspired by [Stimulus](https://stimulus.hotwired.dev). Crystallized includes:
+Crystallized can be used with any ESM bundler as well as directly in buildless HTML using `script type="module"`.
 
-* `DeclarativeActionsController` - lets you add action attributes to elements in the light DOM as a way of providing declarative event handlers.
+Crystallized works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com)—providing features not normally found in web component libraries that assume they're only concerned with client-rendered markup and event handling.
 
-* `TargetsController` - lets you easily query child nodes in the light DOM using either selectors or explicit attribute-based identifies.
-
-Crystallized is written in [Ruby2JS][ruby2js-url], which is then compiled to modern ES6+ JavaScript. (You don't need Ruby/Ruby2JS installed to use Crystallized.) Crystallized can be used with _any modern JS bundler_ as well as directly in buildless HTML using `script type="module"`.
-
-Lit along with Crystallized works great as a spice on top of server-rendered markup originating from backend frameworks like [Rails](https://rubyonrails.org) or static sites generators like [Bridgetown](https://www.bridgetownrb.com)—providing features not normally found in web component libraries that assume they're only concerned with client-rendered markup and event handling.
-
-You can build an entire suite of reactive frontend components just with Lit/Crystallized, along with a general strategy to enhance your site with a variety of emerging [web components](https://github.com/topics/web-components) and component libraries ([Shoelace](https://shoelace.style) for example).
+You can build an entire suite of reactive frontend components just with Crystallized, along with a general strategy to enhance your site with a variety of emerging [web components](https://github.com/topics/web-components) and component libraries ([Shoelace](https://shoelace.style) for example).
 
 ## Installation & Usage
 
-**[Here's the documentation on how to use Crystallized's Lit 2 controllers.](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers)**
+**[Here's the documentation on how to use Crystallized's controllers.](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers)**
 
 ## Contributing
 
@@ -33,8 +27,3 @@ You can build an entire suite of reactive frontend components just with Lit/Crys
 ## License
 
 MIT
-
-[lit]: https://img.shields.io/badge/-Lit-324FFF?style=for-the-badge&logo=lit&logoColor=white"
-[lit-url]: https://lit.dev
-[ruby2js]: https://img.shields.io/badge/Ruby2JS-darkred?style=for-the-badge&logo=ruby
-[ruby2js-url]: https://www.ruby2js.com

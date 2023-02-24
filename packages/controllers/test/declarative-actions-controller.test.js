@@ -7,15 +7,21 @@ import { DeclarativeActionsController } from "../dist"
 
 class TestElement extends LitElement {
   actions = new DeclarativeActionsController(this)
+  shadowActions = new DeclarativeActionsController(this, { shadow: true })
 
   clickMe() {
     this.shadowRoot.querySelector("test-msg").textContent = "clicked!"
+  }
+
+  shadowClick() {
+    this.shadowRoot.querySelector("test-msg").textContent = "via shadow"
   }
 
   render() {
     return html`
       <slot></slot>
       <test-msg></test-msg>
+      <button ze-action="shadowClick">Shadow Click</button>
     `
   }
 }
@@ -35,6 +41,17 @@ describe("DeclarativeActionsController", () => {
 
     el.querySelector("button").click()
     assert.equal(el.shadowRoot.querySelector("test-msg").textContent, "clicked!")
+  })
+
+  it("handles click in the shadow DOM", async () => {
+    const el = await fixture(testhtml`
+      <test-element></test-element>
+    `)
+
+    await aTimeout(100)
+
+    el.shadowRoot.querySelector("button").click()
+    assert.equal(el.shadowRoot.querySelector("test-msg").textContent, "via shadow")
   })
 
   it("handles mutations properly", async () => {

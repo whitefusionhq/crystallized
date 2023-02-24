@@ -12,12 +12,13 @@ class TestElement extends LitElement {
     return {
       message: "@",
       dupMessage: "@message",
-      extra: ["extra-message"]
+      extra: ["extra-message"],
     }
   }
 
   clickMe() {
-    this.shadowRoot.querySelector("test-msg").textContent = this.message.textContent + this.dupMessage.textContent + this.extra[0].textContent
+    this.shadowRoot.querySelector("test-msg").textContent =
+      this.message.textContent + this.dupMessage.textContent + this.extra[0].textContent
   }
 
   render() {
@@ -36,7 +37,7 @@ class NestedTargetsComponent extends LitElement {
   static get targets() {
     return {
       button: "button",
-      buttons: ["button"]
+      buttons: ["button"],
     }
   }
 }
@@ -57,7 +58,7 @@ describe("TargetsController", () => {
     assert.equal(el.shadowRoot.querySelector("test-msg").textContent, "clicked!clicked!howdy")
   })
 
-  it("supports nested targets", async() => {
+  it("supports nested targets", async () => {
     const el = await fixture(testhtml`
       <targets-component>
         <button id="outer">Outer Button</button>
