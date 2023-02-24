@@ -8,7 +8,7 @@ This package, as part of the [Crystallized](https://github.com/whitefusionhq/cry
 
 * [`TargetsController`](https://github.com/whitefusionhq/crystallized/tree/main/packages/controllers#using-targetscontroller) - lets you easily query child nodes in the DOM using either selectors or explicit attribute-based identifiers.
 
-You can use **[Lit][lit-url]** (a library for building fast, reactive web components) along with these controllers, or you can build your own "vanilla" web components and enhance them with the full suite of Crystallized utilities. The entire library is under 7KB (before compression!) and has no dependencies.
+You can use **[Lit](https://lit.dev)** (a library for building fast, reactive web components) along with these controllers, or you can build your own "vanilla" web components and enhance them with the full suite of Crystallized utilities. The entire library is under 7KB (before compression!) and has no dependencies.
 
 ----
 
