@@ -24,11 +24,11 @@ or
 yarn add @crystallized/controllers
 ```
 
-## Adding Controller support to HTMLElement
+## Adding Controller support to `HTMLElement`
 
 (Skip this section if you're using Lit)
 
-Crystallized functionality is added to custom elements via controllers, [a concept pioneered by Lit](https://lit.dev/docs/api/controllers/). To support using controllers with vanilla HTML elements, simply use the `Controllable` mixin:
+Crystallized functionality is added to custom elements via controllers, [a concept pioneered by Lit](https://lit.dev/docs/api/controllers/). To support using controllers with a basic custom element, simply use the `Controllable` mixin:
 
 ```js
 import { Controllable } from "@crystallized/controllers"
@@ -40,7 +40,7 @@ class MyElement extends Controllable(HTMLElement) {
 
 ## Using DeclarativeActionsController
 
-### Lit
+### With Lit
 
 It's very simple to add this controller to any Lit v2+ component. Let's set up a new test component:
 
@@ -81,7 +81,7 @@ Because `DeclarativeActionsController` uses a [MutationObserver](https://develop
 
 In addition, _actions don't pass component boundaries_. In other words, if you were to add a `test-element` inside of another `test-element`, the action within the nested `test-element` would only call the method for that nested component.
 
-### Vanilla JS
+### With Vanilla JS
 
 Using the controller with a vanilla web component is just as straightforward as with Lit:
 
@@ -227,7 +227,7 @@ This is equivalent to the following:
 #targets = new TargetsController(this, { shadow: true })
 ```
 
-### Using with TypeScript
+## Using with TypeScript
 
 While this project wasn't specifically built with TypeScript in mind, it's very easy to set up your TS project to support targets. (There's nothing necessary to set up for actions since they're entirely declarative and HTML-driven.)
 
