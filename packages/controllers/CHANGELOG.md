@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.0] - 2023-02-25
+
+- Rearchitect package in vanilla JavaScript
+- Add support for vanilla web components in addition to Lit
+- Add support for actions and targets inside shadow DOM
+
 ## [4.0.3](https://github.com/whitefusionhq/crystallized/compare/v4.0.2...v4.0.3) (2021-10-05)
 
 ### Bug Fixes
