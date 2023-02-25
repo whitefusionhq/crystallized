@@ -21,7 +21,7 @@ class TestElement extends LitElement {
     return html`
       <slot></slot>
       <test-msg></test-msg>
-      <button ze-action="shadowClick">Shadow Click</button>
+      <button host-action="shadowClick">Shadow Click</button>
     `
   }
 }

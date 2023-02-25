@@ -50,7 +50,7 @@ class TargetsController {
   }
 
   targetizedSelector(name, selector) {
-    const prefix = this.shadow ? "ze-target" : `${this.nodeName}-target`
+    const prefix = this.shadow ? "host-target" : `${this.nodeName}-target`
     if (selector == "@") {
       return `*[${prefix}='${name}']`
     } else {

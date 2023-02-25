@@ -79,7 +79,7 @@ class DeclarativeActionsController {
    * @param changes {MutationRecord[]}
    */
   handleNodeChanges(changes) {
-    let actionAttr = this.shadow ? "ze-action" : `${this.nodeName}-action`
+    let actionAttr = this.shadow ? "host-action" : `${this.nodeName}-action`
 
     /**
      * Function to set up event listeners

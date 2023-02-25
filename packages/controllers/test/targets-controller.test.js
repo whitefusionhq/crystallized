@@ -33,12 +33,25 @@ customElements.define("test-element", TestElement)
 
 class NestedTargetsComponent extends LitElement {
   targets = new TargetsController(this)
+  shadowTargets = new TargetsController(this, {
+    shadow: true,
+    targets: {
+      message: "@"
+    }
+  })
 
   static get targets() {
     return {
       button: "button",
       buttons: ["button"],
     }
+  }
+
+  render() {
+    return html`
+      <slot></slot>
+      <span host-target="message">Message</span>
+    `
   }
 }
 customElements.define("targets-component", NestedTargetsComponent)
@@ -75,5 +88,9 @@ describe("TargetsController", () => {
     const nestedEl = el.querySelector("targets-component")
     assert.equal(nestedEl.buttons.length, 1)
     assert.equal(nestedEl.buttons[0], el.querySelector("#inner"))
+
+    assert.equal(nestedEl.message.textContent, "Message")
+    nestedEl.message.textContent = "Message received"
+    assert.equal(nestedEl.message.textContent, "Message received")
   })
 })

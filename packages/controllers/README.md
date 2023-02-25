@@ -122,6 +122,12 @@ actions = new DeclarativeActionsController(this)
 shadowActions = new DeclarativeActionsController(this, { shadow: true })
 ```
 
+For actions declared in the shadow DOM, use the `host-action` attribute:
+
+```js
+<button host-action="clickMe">Button</button>
+```
+
 ## Using TargetsController
 
 A target is a specific element, or elements, in your DOM you would like to access from your component. Like actions, you can specify targets using special HTML attributes. However, you can also target any element directly regardless of markup by using a selector.
@@ -198,6 +204,12 @@ class TestElement extends Controllable(HTMLElement) {
 
   ////
 }
+```
+
+For targets using `@` identifiers, use `host-target` as the attribute name:
+
+```html
+<span host-target="message">Message</span>
 ```
 
 ## Private Fields
