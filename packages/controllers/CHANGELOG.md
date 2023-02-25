@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [5.0.0] - 2023-02-25
+## [5.0.0](https://github.com/whitefusionhq/crystallized/compare/v4.0.3...v5.0.0) - 2023-02-25
 
 - Rearchitect package in vanilla JavaScript
 - Add support for vanilla web components in addition to Lit
