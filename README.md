@@ -101,7 +101,7 @@ In addition, _actions don't pass component boundaries_. In other words, if you w
 Using the controller with a vanilla web component is just as straightforward as with Lit:
 
 ```js
-import { Controllable } from "@crystallized/controllers"
+import { Controllable, DeclarativeActionsController } from "@crystallized/controllers"
 
 const template = Object.assign(document.createElement("template"), {
   innerHTML: `
