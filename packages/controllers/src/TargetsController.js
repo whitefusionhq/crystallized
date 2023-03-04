@@ -3,8 +3,8 @@
  */
 class TargetsController {
   /**
-   * @param host {HTMLElement}
-   * @param options {{ targets?: any, shadow?: boolean } | undefined}
+   * @param {HTMLElement} host
+   * @param {{ targets?: any, shadow?: boolean } | undefined} options
    */
   constructor(host, options) {
     /** @type {HTMLElement} */

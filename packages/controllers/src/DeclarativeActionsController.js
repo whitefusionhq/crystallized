@@ -3,8 +3,8 @@
  */
 class DeclarativeActionsController {
   /**
-   * @param host {HTMLElement}
-   * @param options {{ shadow: boolean } | undefined}
+   * @param {HTMLElement} host 
+   * @param {{ shadow: boolean } | undefined} options
    */
   constructor(host, options) {
     /** @type {HTMLElement} */
@@ -53,7 +53,7 @@ class DeclarativeActionsController {
   /**
    * Given an element, returns the default event name (submit, input, change, click)
    *
-   * @param node {HTMLElement}
+   * @param {HTMLElement} node 
    * @returns {string}
    */
   defaultActionForNode(node) {
@@ -76,7 +76,7 @@ class DeclarativeActionsController {
   /**
    * Callback for MutationObserver
    *
-   * @param changes {MutationRecord[]}
+   * @param {MutationRecord[]} changes 
    */
   handleNodeChanges(changes) {
     let actionAttr = this.shadow ? "host-action" : `${this.nodeName}-action`
@@ -84,8 +84,8 @@ class DeclarativeActionsController {
     /**
      * Function to set up event listeners
      *
-     * @param node {HTMLElement}
-     * @param onlyHostNode {boolean}
+     * @param {HTMLElement} node
+     * @param {boolean} onlyHostNode
      */
     let setupListener = (node, onlyHostNode) => {
       // prettier-ignore
