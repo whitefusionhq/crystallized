@@ -65,19 +65,18 @@ class MyCounter extends HTMLElement {
   constructor() {
     super()
 
-    // Set up a bucket to manage our reactive property definitions
-    this.attributeProps = {}
-
-    // Add a reactive property for `count`
-    this.attributeProps.count = new ReactiveProperty(
-      this, // pass a reference to this element instance
-      signal(0), // create a signal with an initial value
-      {
-        name: "count", // the name of the property
-        // attribute: "count-attr", // if you need a different attribute name
-        // reflect: false, // turn off the prop->attribute reflection if need be
-      }
-    )
+    // Set up some reactive property definitions
+    this.attributeProps = {
+      "count": new ReactiveProperty( // Add a reactive property for the `count` attribute
+        this, // pass a reference to this element instance
+        signal(0), // create a signal with an initial value
+        {
+          name: "count", // the name of the property
+          // attribute: "count-attr", // if you need a different attribute name (make sure object key matches!)
+          // reflect: false, // turn off the prop->attribute reflection if need be
+        }
+      )
+    }
   }
 
   connectedCallback() {
