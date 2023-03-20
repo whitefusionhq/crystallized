@@ -74,12 +74,25 @@ class DeclarativeActionsController {
   }
 
   /**
+   * Returns the appropriate action delimiter to use
+   *
+   * @param {string} str 
+   */
+  actionPairDelimiter(str) {
+    if (str.includes("->")) {
+      return "->"
+    } else {
+      return "#"
+    }
+  }
+
+  /**
    * Callback for MutationObserver
    *
    * @param {MutationRecord[]} changes 
    */
   handleNodeChanges(changes) {
-    let actionAttr = this.shadow ? "host-action" : `${this.nodeName}-action`
+    const actionAttr = this.shadow ? "host-action" : `${this.nodeName}-action`
 
     /**
      * Function to set up event listeners
@@ -87,7 +100,7 @@ class DeclarativeActionsController {
      * @param {HTMLElement} node
      * @param {boolean} onlyHostNode
      */
-    let setupListener = (node, onlyHostNode) => {
+    let setupListener = (node, onlyHostNode) => { // TODO: relocate to separate method
       // prettier-ignore
       if (
         !onlyHostNode &&
@@ -99,7 +112,7 @@ class DeclarativeActionsController {
 
       if (node.hasAttribute(actionAttr)) {
         for (let actionPair of node.getAttribute(actionAttr).split(" ")) {
-          let [actionEvent, actionName] = actionPair.split("->")
+          let [actionEvent, actionName] = actionPair.split(this.actionPairDelimiter(actionPair))
 
           if (typeof actionName === "undefined") {
             actionName = actionEvent

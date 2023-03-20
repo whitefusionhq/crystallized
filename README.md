@@ -90,7 +90,7 @@ You'll notice that currently nothing actually calls the `clickMe` method. Don't 
 </test-element>
 ```
 
-The tag name of the component (aka `test-element`) plus `action` sets up the event handler via an action attribute, with the method name `clickMe` being the value of the attribute. This is shorthand for `click->clickMe`. The controller defaults to `click` if no event type is specified (with a few exceptions, such as `submit` for forms and `input`  or `change` for various form controls).
+The tag name of the component (aka `test-element`) plus `action` sets up the event handler via an action attribute, with the method name `clickMe` being the value of the attribute. This is shorthand for `click#clickMe`. The controller defaults to `click` if no event type is specified (with a few exceptions, such as `submit` for forms and `input`  or `change` for various form controls).
 
 Because `DeclarativeActionsController` uses a [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to keep an eye on HTML in the DOM, at any time you can update the markup dynamically and actions will work as expected.
 

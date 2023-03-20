@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## Upcoming
+
+- Change preferred action delimiter to `#`, aka `input#changeValue` (previously was `->`)
+
 ## [5.0.0](https://github.com/whitefusionhq/crystallized/compare/v4.0.3...v5.0.0) - 2023-02-25
 
 - Rearchitect package in vanilla JavaScript

@@ -78,12 +78,13 @@ describe("DeclarativeActionsController", () => {
         </article>
 
         <test-element id="nested">
-          <button test-element-action="clickMe">Button 2</button>
+          <button test-element-action="click#clickMe">Button 2</button>
         </test-element>
       </test-element>
     `)
 
     el.querySelector("#nested button").click()
+    assert.equal(el.querySelector("#nested").shadowRoot.querySelector("test-msg").textContent, "clicked!")
     assert.notEqual(el.shadowRoot.querySelector("test-msg").textContent, "clicked!")
   })
 })
