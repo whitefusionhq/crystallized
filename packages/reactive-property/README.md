@@ -57,6 +57,7 @@ And it does this thanks to the amazing new Signals library from the folks at Pre
 
 ```js
 import { signal, effect } from "@preact/signals-core"
+import { ReactiveProperty } from "@crystallized/reactive-property"
 
 class MyCounter extends HTMLElement {
   static observedAttributes = ["count"]
@@ -68,7 +69,7 @@ class MyCounter extends HTMLElement {
     this.attributeProps = {}
 
     // Add a reactive property for `count`
-    this.attributeProps["count"] = new ReactiveProperty(
+    this.attributeProps.count = new ReactiveProperty(
       this, // pass a reference to this element instance
       signal(0), // create a signal with an initial value
       {
