@@ -8,6 +8,7 @@
   "repository": "https://github.com/whitefusionhq/crystallized",
   "author": "Jared White",
   "license": "MIT",
+  "private": false,
   "engines": {
     "node": ">= 14"
   },
