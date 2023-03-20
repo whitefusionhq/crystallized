@@ -1,7 +1,7 @@
 {
-  "name": "@crystallized/controllers",
-  "version": "5.0.1",
-  "description": "A collection of quality-of-life DX enhancements to Lit or vanilla web components",
+  "name": "@crystallized/reactive-property",
+  "version": "1.0.0",
+  "description": "Data parsing and reactive sync for an element attribute/property using Signals.",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "type": "module",
@@ -26,9 +26,6 @@
     "dist",
     "src"
   ],
-  "dependencies": {
-    "@crystallized/reactive-property": "1.0.0"
-  },
   "devDependencies": {
     "@open-wc/testing": "^3.1.7",
     "@web/test-runner": "^0.15.1",
@@ -36,7 +33,7 @@
     "esbuild": "^0.17.10"
   },
   "peerDependencies": {
-    "lit": "^2.0.0"
+    "@preact/signals-core": "^1.2.3"
   },
   "prettier": {
     "printWidth": 100,

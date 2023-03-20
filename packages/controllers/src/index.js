@@ -1,6 +1,15 @@
 import DeclarativeActionsController from "./DeclarativeActionsController"
 import TargetsController from "./TargetsController"
 
+/**
+ * @template T
+ * @typedef {new(...args: any[]) => T} Constructor
+ **/
+
+/**
+ * @template {Constructor<{}>} T
+ * @param {T} Base
+ */
 export const Controllable = (Base) => {
   return class Controllable extends Base {
   	addController(controller) {
