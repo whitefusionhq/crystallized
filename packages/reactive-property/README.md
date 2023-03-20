@@ -6,7 +6,15 @@ A tiny library for data parsing and reactive sync for an element attribute/prope
 
 ## Installation
 
-...
+```sh
+npm i @crystallized/reactive-property @preact/signals-core
+```
+
+or
+
+```sh
+yarn add @crystallized/reactive-property @preact/signals-core
+```
 
 ## Rationale
 
@@ -156,5 +164,5 @@ Run `npm run test` to run the test suite, or `npm run test:dev` to watch tests a
 
 MIT
 
-[npm]: https://img.shields.io/npm/v/@crystallized/controllers.svg?style=for-the-badge
-[npm-url]: https://npmjs.com/package/@crystallized/controllers
+[npm]: https://img.shields.io/npm/v/@crystallized/reactive-property.svg?style=for-the-badge
+[npm-url]: https://npmjs.com/package/@crystallized/reactive-property
