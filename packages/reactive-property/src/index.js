@@ -1,3 +1,3 @@
-import ReactiveProperty from "./ReactiveProperty"
+import ReactiveProperty from "./ReactiveProperty.js"
 
 export { ReactiveProperty }

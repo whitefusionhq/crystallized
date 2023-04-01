@@ -1,5 +1,5 @@
-import DeclarativeActionsController from "./DeclarativeActionsController"
-import TargetsController from "./TargetsController"
+import DeclarativeActionsController from "./DeclarativeActionsController.js"
+import TargetsController from "./TargetsController.js"
 
 /**
  * @template T
