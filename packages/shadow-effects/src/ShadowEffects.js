@@ -35,6 +35,13 @@ class ShadowEffects {
   }
 
   /**
+   * Only attempt this if you know what you're doing!
+   */
+  processElementChildren() {
+    this.processNodes(this.element.querySelectorAll(`[host-effect]`))
+  }
+
+  /**
    * `host-effect="$el.textContent = count"`
    * `host-effect="someMethod($el, count)"`
    * `host-effect="$directive(count)"`
