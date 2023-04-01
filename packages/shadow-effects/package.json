@@ -1,6 +1,6 @@
 {
   "name": "@crystallized/shadow-effects",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Declarative effects in shadow DOM HTML using Signals.",
   "main": "dist/index.js",
   "module": "dist/index.js",
