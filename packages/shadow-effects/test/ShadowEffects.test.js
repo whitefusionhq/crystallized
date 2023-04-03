@@ -52,7 +52,7 @@ class TestElement extends HTMLElement {
 
   get paraClasses() {
     return {
-      "some-class": true,
+      "some-class": this.countSignal.value < 5,
       "another-class": false
     }
   }
@@ -75,6 +75,8 @@ describe("ShadowEffects", () => {
         <test-element></test-element>
       `)
       assert.strictEqual(el.shadowRoot.firstElementChild.textContent, "1")
+      el.countSignal.value = 5
+      assert.strictEqual(el.shadowRoot.firstElementChild.textContent, "5")
     })
   })
 
@@ -104,7 +106,9 @@ describe("ShadowEffects", () => {
         <test-element></test-element>
       `)
       assert.isTrue(el.shadowRoot.firstElementChild.classList.contains("some-class"), "some-class should be set")
-      assert.isNotTrue(el.shadowRoot.firstElementChild.classList.contains("another-class"), "another-class shouldn't be set")
+      assert.isFalse(el.shadowRoot.firstElementChild.classList.contains("another-class"), "another-class shouldn't be set")
+      el.countSignal.value = 10
+      assert.isFalse(el.shadowRoot.firstElementChild.classList.contains("some-class"), "some-class should NOT be set after reactive update")
     })
 
     it("styleMap", async () => {
