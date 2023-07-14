@@ -24,7 +24,7 @@ The `ReactiveProperty` class takes advantage of fine-grained reactivity using Si
 <my-counter count="1">
   <output>1</output>
   <button id="inc">Inc +</button>
-  <button id="dec">Dec +</button>
+  <button id="dec">Dec -</button>
 </my-counter>
 ```
 
