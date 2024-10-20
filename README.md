@@ -1,6 +1,9 @@
 # ❄️ Crystallized: Enhancements to Web Components
 
-[![npm][npm]][npm-url]
+> ![WARNING]
+> I've sunsetting this project in favor of an entirely new, declarative HTML-first web component format. I'll update this README once that's publicly available. In the meantime, consider this repo as-is with no plans to develop things further.
+
+----
 
 **Crystallized** is a collection of quality-of-life DX enhancements to Lit or "vanilla" web components, inspired in part by [Stimulus](https://stimulus.hotwired.dev). Crystallized includes:
 
