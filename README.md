@@ -1,6 +1,6 @@
 # ❄️ Crystallized: Enhancements to Web Components
 
-> ![WARNING]
+> [!WARNING]
 > I've sunsetting this project in favor of an entirely new, declarative HTML-first web component format. I'll update this README once that's publicly available. In the meantime, consider this repo as-is with no plans to develop things further.
 
 ----
